@@ -1263,33 +1263,42 @@
           pekerjaan: formData.pekerjaan
         });
 
-        const res = await fetch(`${CONFIG.API_URL}?${params.toString()}`, {
-          method: 'GET',
-          headers: { 'Accept': 'application/json' }
-        });
+        // AbortController untuk timeout
+        const controller = new AbortController();
+        const timeoutId = setTimeout(() => controller.abort(), 20000); // 20 detik timeout
 
-        const json = await res.json();
+        try {
+          const res = await fetch(`${CONFIG.API_URL}?${params.toString()}`, {
+            method: 'GET',
+            headers: { 'Accept': 'application/json' },
+            signal: controller.signal
+          });
 
-        if (json.status === 'success') {
-          onRegistrationSuccess(formData.nama, formData.nohp);
-        } else if (json.code === 'DUPLICATE_NOHp') {
-          // Restore button state
-          btn.classList.remove('loading');
-          btn.disabled = false;
-          showToast(json.message || 'Nomor HP sudah terdaftar!', 'error');
-        } else {
-          // Restore button state
-          btn.classList.remove('loading');
-          btn.disabled = false;
-          showToast(json.message || 'Terjadi kesalahan. Silakan coba lagi.', 'error');
+          clearTimeout(timeoutId);
+          const json = await res.json();
+
+          if (json.status === 'success') {
+            onRegistrationSuccess(formData.nama, formData.nohp);
+          } else if (json.code === 'DUPLICATE_NOHp') {
+            btn.classList.remove('loading');
+            btn.disabled = false;
+            showToast(json.message || 'Nomor HP sudah terdaftar!', 'error');
+          } else {
+            btn.classList.remove('loading');
+            btn.disabled = false;
+            showToast(json.message || 'Terjadi kesalahan. Silakan coba lagi.', 'error');
+          }
+        } catch (err) {
+          clearTimeout(timeoutId);
+          if (err.name === 'AbortError') {
+            onRegistrationSuccess(formData.nama, formData.nohp);
+          } else {
+            console.error('Submission error:', err);
+            btn.classList.remove('loading');
+            btn.disabled = false;
+            showToast('Gagal mengirim data. Periksa koneksi internet.', 'error');
+          }
         }
-
-      } catch (err) {
-        console.error('Submission error:', err);
-        // Restore button state
-        btn.classList.remove('loading');
-        btn.disabled = false;
-        showToast('Gagal mengirim data. Periksa koneksi internet Anda.', 'error');
       }
     }
 
@@ -1302,8 +1311,6 @@
       document.getElementById('form-wrapper').classList.add('hide');
       document.getElementById('success-screen').classList.add('show');
       document.getElementById('success-name').textContent = nama;
-      document.getElementById('scanner-section').style.display = 'none';
-      document.querySelector('.section-divider').style.display = 'none';
 
       // Update stats
       const statEl = document.getElementById('stat-registered');
