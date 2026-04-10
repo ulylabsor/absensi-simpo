@@ -627,76 +627,6 @@
       border: 1.5px solid var(--border);
     }
 
-    /* Already Registered Screen */
-    .already-screen {
-      display: none;
-      text-align: center;
-      padding: 40px 24px;
-    }
-
-    .already-screen.show {
-      display: block;
-    }
-
-    .already-icon-wrap {
-      width: 120px;
-      height: 120px;
-      background: linear-gradient(135deg, var(--accent-light), #FEF3C7);
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      margin: 0 auto 28px;
-    }
-
-    .already-icon-wrap svg {
-      width: 60px;
-      height: 60px;
-    }
-
-    .already-title {
-      font-family: var(--font-heading);
-      font-size: 2rem;
-      font-weight: 700;
-      color: var(--accent);
-      margin-bottom: 10px;
-    }
-
-    .already-name {
-      font-size: 1.25rem;
-      font-weight: 600;
-      color: var(--text);
-      margin-bottom: 10px;
-    }
-
-    .already-message {
-      font-size: 1rem;
-      color: var(--text-secondary);
-      line-height: 1.7;
-      max-width: 400px;
-      margin: 0 auto 28px;
-    }
-
-    .already-btn {
-      padding: 14px 28px;
-      background: var(--accent);
-      color: white;
-      border: none;
-      border-radius: var(--radius-sm);
-      font-family: var(--font-body);
-      font-size: 1rem;
-      font-weight: 600;
-      cursor: pointer;
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      transition: background 0.2s;
-    }
-
-    .already-btn:hover {
-      background: #E6A200;
-    }
-
     /* Form wrapper visibility */
     #form-wrapper {
       display: block;
@@ -995,7 +925,7 @@
             </svg>
             Cetak Bukti Pendaftaran
           </button>
-          <button class="success-action-btn secondary" onclick="resetForm()">
+          <button class="success-action-btn secondary" onclick="showFormAgain()">
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
               stroke-linecap="round" stroke-linejoin="round">
               <path d="M3 12a9 9 0 0 1 9-9 9.75 9.75 0 0 1 6.74 2.74L21 8" />
@@ -1006,31 +936,6 @@
             Daftar dengan Data Lain
           </button>
         </div>
-      </div>
-
-      <!-- Already Registered Screen -->
-      <div class="already-screen" id="already-screen">
-        <div class="already-icon-wrap">
-          <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#B45309" stroke-width="2"
-            stroke-linecap="round" stroke-linejoin="round">
-            <circle cx="12" cy="12" r="10" />
-            <polyline points="12 6 12 12 16 14" />
-          </svg>
-        </div>
-        <h2 class="already-title">Sudah Terdaftar</h2>
-        <p class="already-name" id="already-name"></p>
-        <p class="already-message">
-          Nomor HP ini sudah terdaftar. Jika ada kesalahan data, silakan hubungi petugas.
-        </p>
-        <button class="already-btn" onclick="window.print()">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-            stroke-linecap="round" stroke-linejoin="round">
-            <polyline points="6 9 6 2 18 2 18 9" />
-            <path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2" />
-            <rect width="12" height="8" x="6" y="14" />
-          </svg>
-          Cetak Bukti Pendaftaran
-        </button>
       </div>
 
     </div>
@@ -1152,7 +1057,6 @@
     document.addEventListener('DOMContentLoaded', () => {
       populateTahunMasuk();
       populateJurusan();
-      checkAlreadyRegistered();
       setupFormValidation();
       fetchStats();
     });
@@ -1191,53 +1095,6 @@
         });
         jurusanSelect.disabled = false;
       });
-    }
-
-    // ========================
-    // LOCAL STORAGE
-    // ========================
-    function checkAlreadyRegistered() {
-      const saved = localStorage.getItem('absensi_uinrf');
-      if (saved) {
-        try {
-          const data = JSON.parse(saved);
-          showAlreadyRegistered(data.nama);
-          return;
-        } catch (e) {
-          localStorage.removeItem('absensi_uinrf');
-        }
-      }
-      // Check with server
-      const nohp = localStorage.getItem('absensi_nohp');
-      if (nohp) {
-        checkServerStatus(nohp);
-      }
-    }
-
-    async function checkServerStatus(nohp) {
-      try {
-        const res = await fetch(`${CONFIG.API_URL}?action=check&nohp=${encodeURIComponent(nohp)}`);
-        const json = await res.json();
-        if (json.status === 'registered') {
-          showAlreadyRegistered(json.nama);
-        }
-      } catch (e) {
-        // Offline or API not configured yet
-      }
-    }
-
-    function showAlreadyRegistered(nama) {
-      document.getElementById('form-wrapper').classList.add('hide');
-      document.getElementById('already-screen').classList.add('show');
-      document.getElementById('already-name').textContent = nama || 'Peserta';
-      document.getElementById('scanner-section').style.display = 'none';
-      document.querySelector('.section-divider').style.display = 'none';
-    }
-
-    function resetForm() {
-      localStorage.removeItem('absensi_uinrf');
-      localStorage.removeItem('absensi_nohp');
-      location.reload();
     }
 
     // ========================
@@ -1399,7 +1256,7 @@
           const json = await res.json();
 
           if (json.status === 'success') {
-            onRegistrationSuccess(formData.nama, formData.nohp);
+            onRegistrationSuccess(formData.nama);
           } else if (json.code === 'DUPLICATE_NOHp') {
             btn.classList.remove('loading');
             btn.disabled = false;
@@ -1412,7 +1269,7 @@
       } catch (err) {
         clearTimeout(timeoutId);
         if (err.name === 'AbortError') {
-          onRegistrationSuccess(formData.nama, formData.nohp);
+          onRegistrationSuccess(formData.nama);
         } else {
           console.error('Submission error:', err);
           btn.classList.remove('loading');
@@ -1423,11 +1280,7 @@
     }
 
 
-    function onRegistrationSuccess(nama, nohp) {
-      // Save to localStorage
-      localStorage.setItem('absensi_nohp', nohp);
-      localStorage.setItem('absensi_uinrf', JSON.stringify({ nama, nohp, ts: Date.now() }));
-
+    function onRegistrationSuccess(nama) {
       // Show success screen
       document.getElementById('form-wrapper').classList.add('hide');
       document.getElementById('success-screen').classList.add('show');
@@ -1440,6 +1293,15 @@
 
       // Scroll to top
       window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    function showFormAgain() {
+      // Hide success, show form, reset form fields
+      document.getElementById('success-screen').classList.remove('show');
+      document.getElementById('form-wrapper').classList.remove('hide');
+      document.getElementById('reg-form').reset();
+      // Scroll to form
+      document.getElementById('form-card').scrollIntoView({ behavior: 'smooth' });
     }
 
     // ========================
