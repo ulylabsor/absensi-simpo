@@ -23,6 +23,9 @@
 const SHEET_ID = 'YOUR_GOOGLE_SHEET_ID_HERE';
 const SHEET_NAME = 'Peserta';
 
+// Cache sheet object per execution (avoid re-opening spreadsheet)
+let _cachedSheet = null;
+
 // ==================== COLUMN INDEX ====================
 // 1-based index untuk Google Sheets
 const COL = {
@@ -110,16 +113,7 @@ function handleRegisterGet(e) {
     return returnJSON({ status: 'error', message: validation.message });
   }
 
-  // 2. Check duplicate nohp
-  if (isDuplicateNohp(data.nohp)) {
-    return returnJSON({
-      status: 'error',
-      message: 'Nomor HP sudah terdaftar. Jika sudah pernah daftar, silakan hubungi petugas.',
-      code: 'DUPLICATE_NOHp'
-    });
-  }
-
-  // 3. Write to sheet
+  // 2. Write to sheet (langsung, tanpa cek duplikat)
   const sheet = getSheet();
   sheet.appendRow([
     new Date(),
@@ -211,47 +205,33 @@ function validateRegistration(data) {
 
 // ==================== HELPERS ====================
 function getSheet() {
+  if (_cachedSheet) return _cachedSheet;
+
   if (SHEET_ID === 'YOUR_GOOGLE_SHEET_ID_HERE' || !SHEET_ID) {
     throw new Error('SHEET_ID belum di-set. Buka Code.gs dan ganti SHEET_ID dengan ID Google Sheet Anda.');
   }
   const ss = SpreadsheetApp.openById(SHEET_ID);
-  let sheet = ss.getSheetByName(SHEET_NAME);
+  _cachedSheet = ss.getSheetByName(SHEET_NAME);
 
   // Auto-create if not exists
-  if (!sheet) {
-    sheet = ss.insertSheet(SHEET_NAME);
+  if (!_cachedSheet) {
+    _cachedSheet = ss.insertSheet(SHEET_NAME);
     // Add headers
-    sheet.getRange(1, 1, 1, 9).setValues([[
+    _cachedSheet.getRange(1, 1, 1, 9).setValues([[
       'Timestamp', 'Nama', 'No HP/WA', 'Email',
       'Tahun Masuk', 'Fakultas', 'Jurusan/Prodi',
       'Alamat', 'Pekerjaan/Instansi'
     ]]);
     // Style headers
-    sheet.getRange(1, 1, 1, 9)
+    _cachedSheet.getRange(1, 1, 1, 9)
       .setBackground('#006D32')
       .setFontColor('#FFFFFF')
       .setFontWeight('bold')
       .setHorizontalAlignment('center');
-    sheet.setFrozenRows(1);
+    _cachedSheet.setFrozenRows(1);
   }
 
-  return sheet;
-}
-
-function isDuplicateNohp(nohp) {
-  const sheet = getSheet();
-  const lastRow = sheet.getLastRow();
-  if (lastRow < 2) return false; // Only header
-
-  const nohpCol = sheet.getRange(2, COL.nohp, lastRow - 1, 1).getValues();
-  const normalized = normalizeNohp(nohp);
-
-  for (let i = 0; i < nohpCol.length; i++) {
-    if (normalizeNohp(nohpCol[i][0]) === normalized) {
-      return true;
-    }
-  }
-  return false;
+  return _cachedSheet;
 }
 
 function normalizeNohp(nohp) {
