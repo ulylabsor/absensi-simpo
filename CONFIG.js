@@ -14,7 +14,7 @@
 const CONFIG = {
   // Google Apps Script Web App URL
   // Format: https://script.google.com/macros/s/{SCRIPT_ID}/exec
-  API_URL: 'https://script.google.com/macros/s/AKfycbyinwvJcXeGA3ISpNuyv7P_xetTVqeCvyDCZAZ_jjjQb6_9bih4JDcjQHl3lN9blPZ8BQ/exec',
+  API_URL: 'https://script.google.com/macros/s/AKfycbw7C6mHbNDDggt_j7TqBoGKovwX-viPLKkJQhF1hlYU4rbXFs-Iau2Ez6uj6pTkkK8-uA/exec',
 
   // Event Information
   EVENT_NAME: 'Simposium Alumni UIN Raden Fatah Palembang',

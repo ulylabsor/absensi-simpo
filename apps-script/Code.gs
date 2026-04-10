@@ -39,9 +39,15 @@ const COL = {
 
 // ==================== GET ====================
 function doGet(e) {
+  if (!e || !e.parameter) {
+    return returnJSON({ message: 'API aktif. Gunakan parameter ?action=register, ?action=check, atau ?action=stats' });
+  }
   const action = e.parameter.action;
 
   try {
+    if (action === 'register') {
+      return handleRegisterGet(e);
+    }
     if (action === 'check') {
       return handleCheck(e);
     }
@@ -82,17 +88,22 @@ function handleStats() {
   return returnJSON({ count: count });
 }
 
-// ==================== POST ====================
-function doPost(e) {
-  try {
-    const data = JSON.parse(e.postData.contents);
-    return handleRegister(data);
-  } catch (err) {
-    return returnJSON({ status: 'error', message: err.toString() });
+// ==================== REGISTER (GET - query params) ====================
+function handleRegisterGet(e) {
+  if (!e || !e.parameter) {
+    return returnJSON({ status: 'error', message: 'Missing parameters' });
   }
-}
+  const data = {
+    nama: e.parameter.nama,
+    nohp: e.parameter.nohp,
+    email: e.parameter.email,
+    tahun_masuk: e.parameter.tahun_masuk,
+    fakultas: e.parameter.fakultas,
+    jurusan: e.parameter.jurusan,
+    alamat: e.parameter.alamat,
+    pekerjaan: e.parameter.pekerjaan
+  };
 
-function handleRegister(data) {
   // 1. Validate
   const validation = validateRegistration(data);
   if (!validation.valid) {
@@ -126,6 +137,16 @@ function handleRegister(data) {
     status: 'success',
     message: 'Pendaftaran berhasil!'
   });
+}
+
+// Kept for backwards compatibility if using POST
+function doPost(e) {
+  try {
+    const data = JSON.parse(e.postData.contents);
+    return handleRegisterGet(e);
+  } catch (err) {
+    return returnJSON({ status: 'error', message: err.toString() });
+  }
 }
 
 // ==================== VALIDATION ====================
@@ -190,6 +211,9 @@ function validateRegistration(data) {
 
 // ==================== HELPERS ====================
 function getSheet() {
+  if (SHEET_ID === 'YOUR_GOOGLE_SHEET_ID_HERE' || !SHEET_ID) {
+    throw new Error('SHEET_ID belum di-set. Buka Code.gs dan ganti SHEET_ID dengan ID Google Sheet Anda.');
+  }
   const ss = SpreadsheetApp.openById(SHEET_ID);
   let sheet = ss.getSheetByName(SHEET_NAME);
 

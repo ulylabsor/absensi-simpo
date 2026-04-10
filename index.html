@@ -937,12 +937,15 @@
   <!-- html5-qrcode library -->
   <script src="https://unpkg.com/html5-qrcode@2.3.8/html5-qrcode.min.js"></script>
 
+  <!-- App Configuration -->
+  <script src="CONFIG.js"></script>
+
   <script>
     // ========================
     // CONFIGURATION
     // ========================
     // IMPORTANT: Replace this URL with your deployed Google Apps Script Web App URL
-    const API_URL = 'https://script.google.com/macros/s/YOUR_SCRIPT_ID/exec';
+    // Use API_URL from CONFIG.js (falls back to placeholder if not set)
 
     // ========================
     // DATA
@@ -1106,7 +1109,7 @@
 
     async function checkServerStatus(nohp) {
       try {
-        const res = await fetch(`${API_URL}?action=check&nohp=${encodeURIComponent(nohp)}`);
+        const res = await fetch(`${CONFIG.API_URL}?action=check&nohp=${encodeURIComponent(nohp)}`);
         const json = await res.json();
         if (json.status === 'registered') {
           showAlreadyRegistered(json.nama);
@@ -1135,7 +1138,7 @@
     // ========================
     async function fetchStats() {
       try {
-        const res = await fetch(`${API_URL}?action=stats`);
+        const res = await fetch(`${CONFIG.API_URL}?action=stats`);
         const json = await res.json();
         document.getElementById('stat-registered').textContent = json.count || 0;
       } catch (e) {
@@ -1262,22 +1265,46 @@
       };
 
       try {
-        const res = await fetch(API_URL, {
-          method: 'POST',
-          mode: 'no-cors',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify(formData)
+        // Build URL with form data as query params (GET request - better CORS support)
+        const params = new URLSearchParams({
+          action: 'register',
+          nama: formData.nama,
+          nohp: formData.nohp,
+          email: formData.email,
+          tahun_masuk: formData.tahun_masuk,
+          fakultas: formData.fakultas,
+          jurusan: formData.jurusan,
+          alamat: formData.alamat,
+          pekerjaan: formData.pekerjaan
         });
 
-        // Note: no-cors mode means we can't read the response
-        // We assume success and show the success screen
-        // If duplicate, the Apps Script will have logged it
-        onRegistrationSuccess(formData.nama, formData.nohp);
+        const res = await fetch(`${CONFIG.API_URL}?${params.toString()}`, {
+          method: 'GET',
+          headers: { 'Accept': 'application/json' }
+        });
+
+        const json = await res.json();
+
+        if (json.status === 'success') {
+          onRegistrationSuccess(formData.nama, formData.nohp);
+        } else if (json.code === 'DUPLICATE_NOHp') {
+          // Restore button state
+          btn.classList.remove('loading');
+          btn.disabled = false;
+          showToast(json.message || 'Nomor HP sudah terdaftar!', 'error');
+        } else {
+          // Restore button state
+          btn.classList.remove('loading');
+          btn.disabled = false;
+          showToast(json.message || 'Terjadi kesalahan. Silakan coba lagi.', 'error');
+        }
 
       } catch (err) {
-        // With no-cors, we can't distinguish success from error
-        // But for UX, assume it worked
-        onRegistrationSuccess(formData.nama, formData.nohp);
+        console.error('Submission error:', err);
+        // Restore button state
+        btn.classList.remove('loading');
+        btn.disabled = false;
+        showToast('Gagal mengirim data. Periksa koneksi internet Anda.', 'error');
       }
     }
 
