@@ -681,40 +681,6 @@
     ::-webkit-scrollbar-track { background: transparent; }
     ::-webkit-scrollbar-thumb { background: var(--primary); border-radius: 4px; }
 
-    /* Loading overlay */
-    .page-loading {
-      position: fixed;
-      inset: 0;
-      background: var(--bg);
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      z-index: 9999;
-      transition: opacity 0.2s;
-    }
-
-    .page-loading.hide {
-      opacity: 0;
-      pointer-events: none;
-      display: none;
-    }
-
-    .page-loading-spinner {
-      width: 48px;
-      height: 48px;
-      border: 3px solid var(--primary-light);
-      border-top-color: var(--primary);
-      border-radius: 50%;
-      animation: spin 0.8s linear infinite;
-      margin-bottom: 16px;
-    }
-
-    .page-loading-text {
-      font-size: 0.9rem;
-      color: var(--text-secondary);
-    }
-
     /* Responsive */
     @media (min-width: 480px) {
       .header-inner { padding: 48px 32px 44px; }
@@ -730,12 +696,6 @@
   </style>
 </head>
 <body>
-
-  <!-- Page Loading -->
-  <div class="page-loading" id="pageLoading">
-    <div class="page-loading-spinner"></div>
-    <div class="page-loading-text">Memuat...</div>
-  </div>
 
   <!-- Toast -->
   <div class="toast" id="toast"></div>
@@ -1401,18 +1361,6 @@
       setTimeout(() => toast.classList.remove('show'), 3000);
     }
 
-    // ========================
-    // PAGE LOADING
-    // ========================
-    function hidePageLoading() {
-      const el = document.getElementById('pageLoading');
-      if (el) el.classList.add('hide');
-    }
-
-    window.addEventListener('load', hidePageLoading);
-
-    // Fallback: force hide after 3 seconds regardless
-    setTimeout(hidePageLoading, 3000);
   </script>
 </body>
 </html>
