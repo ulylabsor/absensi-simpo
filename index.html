@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="id">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
@@ -9,10 +10,18 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Cormorant+Garamond:wght@600;700&display=swap" rel="stylesheet">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Cormorant+Garamond:wght@600;700&display=swap"
+    rel="stylesheet">
 
   <style>
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
 
     :root {
       --primary: #006D32;
@@ -38,7 +47,9 @@
       --font-heading: 'Cormorant Garamond', serif;
     }
 
-    html { scroll-behavior: smooth; }
+    html {
+      scroll-behavior: smooth;
+    }
 
     body {
       font-family: var(--font-body);
@@ -54,6 +65,7 @@
       position: relative;
       overflow: hidden;
     }
+
     .pattern-bg::before {
       content: '';
       position: absolute;
@@ -61,11 +73,12 @@
       right: -30%;
       width: 500px;
       height: 500px;
-      background: radial-gradient(circle at 30% 30%, rgba(0,109,50,0.04) 0%, transparent 60%),
-                  repeating-conic-gradient(from 0deg at 50% 50%, transparent 0deg 10deg, rgba(0,109,50,0.02) 10deg 20deg);
+      background: radial-gradient(circle at 30% 30%, rgba(0, 109, 50, 0.04) 0%, transparent 60%),
+        repeating-conic-gradient(from 0deg at 50% 50%, transparent 0deg 10deg, rgba(0, 109, 50, 0.02) 10deg 20deg);
       border-radius: 50%;
       pointer-events: none;
     }
+
     .pattern-bg::after {
       content: '';
       position: absolute;
@@ -73,7 +86,7 @@
       left: -20%;
       width: 400px;
       height: 400px;
-      background: radial-gradient(circle, rgba(255,179,0,0.04) 0%, transparent 60%);
+      background: radial-gradient(circle, rgba(255, 179, 0, 0.04) 0%, transparent 60%);
       border-radius: 50%;
       pointer-events: none;
     }
@@ -98,21 +111,25 @@
       width: 88px;
       height: 88px;
       margin: 0 auto 20px;
-      background: rgba(255,255,255,0.15);
+      background: rgba(255, 255, 255, 0.15);
       border-radius: 50%;
       display: flex;
       align-items: center;
       justify-content: center;
       backdrop-filter: blur(8px);
-      border: 2px solid rgba(255,255,255,0.25);
+      border: 2px solid rgba(255, 255, 255, 0.25);
     }
 
-    .header-emblem svg { color: white; width: 44px; height: 44px; }
+    .header-emblem svg {
+      color: white;
+      width: 44px;
+      height: 44px;
+    }
 
     .header-tag {
       display: inline-block;
-      background: rgba(255,255,255,0.18);
-      border: 1px solid rgba(255,255,255,0.25);
+      background: rgba(255, 255, 255, 0.18);
+      border: 1px solid rgba(255, 255, 255, 0.25);
       padding: 5px 18px;
       border-radius: 20px;
       font-size: 0.8rem;
@@ -134,7 +151,7 @@
       font-size: 1rem;
       opacity: 0.9;
       font-weight: 500;
-      color: rgba(255,255,255,0.9);
+      color: rgba(255, 255, 255, 0.9);
       margin-bottom: 24px;
     }
 
@@ -200,7 +217,9 @@
     }
 
     /* Main Content */
-    .main { padding: 20px 0 56px; }
+    .main {
+      padding: 20px 0 56px;
+    }
 
     /* Scanner Section */
     .scanner-section {
@@ -261,8 +280,13 @@
       margin-bottom: 12px;
     }
 
-    .scanner-btn:hover { background: var(--primary-dark); }
-    .scanner-btn:active { transform: scale(0.98); }
+    .scanner-btn:hover {
+      background: var(--primary-dark);
+    }
+
+    .scanner-btn:active {
+      transform: scale(0.98);
+    }
 
     .scanner-btn.secondary {
       background: var(--bg);
@@ -270,7 +294,9 @@
       border: 1.5px solid var(--primary);
     }
 
-    .scanner-btn.secondary:hover { background: var(--primary-lighter); }
+    .scanner-btn.secondary:hover {
+      background: var(--primary-lighter);
+    }
 
     #qr-reader {
       border-radius: var(--radius-sm);
@@ -279,7 +305,9 @@
       margin-bottom: 12px;
     }
 
-    #qr-reader video { border-radius: var(--radius-sm); }
+    #qr-reader video {
+      border-radius: var(--radius-sm);
+    }
 
     .scanner-status {
       text-align: center;
@@ -407,7 +435,10 @@
       padding-right: 40px;
     }
 
-    .form-textarea { resize: vertical; min-height: 80px; }
+    .form-textarea {
+      resize: vertical;
+      min-height: 80px;
+    }
 
     .field-error {
       font-size: 0.8rem;
@@ -416,7 +447,9 @@
       display: none;
     }
 
-    .field-error.show { display: block; }
+    .field-error.show {
+      display: block;
+    }
 
     /* Submit Button */
     .submit-btn {
@@ -442,10 +475,12 @@
 
     .submit-btn:hover:not(:disabled) {
       transform: translateY(-2px);
-      box-shadow: 0 8px 24px rgba(0,109,50,0.35);
+      box-shadow: 0 8px 24px rgba(0, 109, 50, 0.35);
     }
 
-    .submit-btn:active:not(:disabled) { transform: translateY(0); }
+    .submit-btn:active:not(:disabled) {
+      transform: translateY(0);
+    }
 
     .submit-btn:disabled {
       opacity: 0.7;
@@ -455,18 +490,25 @@
     .submit-btn .spinner {
       width: 20px;
       height: 20px;
-      border: 2.5px solid rgba(255,255,255,0.3);
+      border: 2.5px solid rgba(255, 255, 255, 0.3);
       border-top-color: white;
       border-radius: 50%;
       animation: spin 0.7s linear infinite;
       display: none;
     }
 
-    .submit-btn.loading .spinner { display: block; }
-    .submit-btn.loading .btn-text { display: none; }
+    .submit-btn.loading .spinner {
+      display: block;
+    }
+
+    .submit-btn.loading .btn-text {
+      display: none;
+    }
 
     @keyframes spin {
-      to { transform: rotate(360deg); }
+      to {
+        transform: rotate(360deg);
+      }
     }
 
     /* Success Screen */
@@ -476,7 +518,9 @@
       padding: 40px 24px;
     }
 
-    .success-screen.show { display: block; }
+    .success-screen.show {
+      display: block;
+    }
 
     .success-icon-wrap {
       width: 120px;
@@ -491,11 +535,22 @@
     }
 
     @keyframes popIn {
-      0% { transform: scale(0); opacity: 0; }
-      100% { transform: scale(1); opacity: 1; }
+      0% {
+        transform: scale(0);
+        opacity: 0;
+      }
+
+      100% {
+        transform: scale(1);
+        opacity: 1;
+      }
     }
 
-    .success-icon-wrap svg { width: 60px; height: 60px; color: var(--success); }
+    .success-icon-wrap svg {
+      width: 60px;
+      height: 60px;
+      color: var(--success);
+    }
 
     .success-badge {
       display: inline-flex;
@@ -579,7 +634,9 @@
       padding: 40px 24px;
     }
 
-    .already-screen.show { display: block; }
+    .already-screen.show {
+      display: block;
+    }
 
     .already-icon-wrap {
       width: 120px;
@@ -592,7 +649,10 @@
       margin: 0 auto 28px;
     }
 
-    .already-icon-wrap svg { width: 60px; height: 60px; }
+    .already-icon-wrap svg {
+      width: 60px;
+      height: 60px;
+    }
 
     .already-title {
       font-family: var(--font-heading);
@@ -633,11 +693,18 @@
       transition: background 0.2s;
     }
 
-    .already-btn:hover { background: #E6A200; }
+    .already-btn:hover {
+      background: #E6A200;
+    }
 
     /* Form wrapper visibility */
-    #form-wrapper { display: block; }
-    #form-wrapper.hide { display: none; }
+    #form-wrapper {
+      display: block;
+    }
+
+    #form-wrapper.hide {
+      display: none;
+    }
 
     /* Footer */
     .footer {
@@ -673,28 +740,70 @@
       text-align: center;
     }
 
-    .toast.show { transform: translateX(-50%) translateY(0); }
-    .toast.error { background: var(--error); }
+    .toast.show {
+      transform: translateX(-50%) translateY(0);
+    }
+
+    .toast.error {
+      background: var(--error);
+    }
 
     /* Scrollbar */
-    ::-webkit-scrollbar { width: 4px; }
-    ::-webkit-scrollbar-track { background: transparent; }
-    ::-webkit-scrollbar-thumb { background: var(--primary); border-radius: 4px; }
+    ::-webkit-scrollbar {
+      width: 4px;
+    }
+
+    ::-webkit-scrollbar-track {
+      background: transparent;
+    }
+
+    ::-webkit-scrollbar-thumb {
+      background: var(--primary);
+      border-radius: 4px;
+    }
 
     /* Responsive */
     @media (min-width: 480px) {
-      .header-inner { padding: 48px 32px 44px; }
-      .main { padding: 36px 0 64px; }
-      .form-card { padding: 36px 32px; }
-      .stats-bar { gap: 56px; padding: 18px 32px; }
-      .form-card-header h2 { font-size: 2rem; }
-      .success-title { font-size: 2.6rem; }
-      .success-message { max-width: 480px; }
-      .already-title { font-size: 2.4rem; }
-      .already-message { max-width: 480px; }
+      .header-inner {
+        padding: 48px 32px 44px;
+      }
+
+      .main {
+        padding: 36px 0 64px;
+      }
+
+      .form-card {
+        padding: 36px 32px;
+      }
+
+      .stats-bar {
+        gap: 56px;
+        padding: 18px 32px;
+      }
+
+      .form-card-header h2 {
+        font-size: 2rem;
+      }
+
+      .success-title {
+        font-size: 2.6rem;
+      }
+
+      .success-message {
+        max-width: 480px;
+      }
+
+      .already-title {
+        font-size: 2.4rem;
+      }
+
+      .already-message {
+        max-width: 480px;
+      }
     }
   </style>
 </head>
+
 <body>
 
   <!-- Toast -->
@@ -704,8 +813,11 @@
   <header class="header pattern-bg">
     <div class="header-inner">
       <div class="header-emblem">
-        <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-          <path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/>
+        <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"
+          stroke-linecap="round" stroke-linejoin="round">
+          <path d="M12 2L2 7l10 5 10-5-10-5z" />
+          <path d="M2 17l10 5 10-5" />
+          <path d="M2 12l10 5 10-5" />
         </svg>
       </div>
       <div class="header-tag">2026</div>
@@ -714,11 +826,21 @@
       <div class="header-divider"></div>
       <div class="header-meta">
         <div class="header-meta-item">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="18" x="3" y="4" rx="2" ry="2"/><line x1="16" x2="16" y1="2" y2="6"/><line x1="8" x2="8" y1="2" y2="6"/><line x1="3" x2="21" y1="10" y2="10"/></svg>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+            stroke-linecap="round" stroke-linejoin="round">
+            <rect width="18" height="18" x="3" y="4" rx="2" ry="2" />
+            <line x1="16" x2="16" y1="2" y2="6" />
+            <line x1="8" x2="8" y1="2" y2="6" />
+            <line x1="3" x2="21" y1="10" y2="10" />
+          </svg>
           2026
         </div>
         <div class="header-meta-item">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+            stroke-linecap="round" stroke-linejoin="round">
+            <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z" />
+            <circle cx="12" cy="10" r="3" />
+          </svg>
           UIN Raden Fatah Palembang
         </div>
       </div>
@@ -752,21 +874,24 @@
             <!-- Nama -->
             <div class="form-group">
               <label class="form-label" for="nama">Nama Lengkap<span class="required">*</span></label>
-              <input type="text" id="nama" name="nama" class="form-input" placeholder="Masukkan nama lengkap" autocomplete="name" maxlength="100">
+              <input type="text" id="nama" name="nama" class="form-input" placeholder="Masukkan nama lengkap"
+                autocomplete="name" maxlength="100">
               <div class="field-error" id="err-nama"></div>
             </div>
 
             <!-- No HP -->
             <div class="form-group">
               <label class="form-label" for="nohp">No HP / WhatsApp<span class="required">*</span></label>
-              <input type="tel" id="nohp" name="nohp" class="form-input" placeholder="08xxxxxxxxxx" autocomplete="tel" maxlength="15">
+              <input type="tel" id="nohp" name="nohp" class="form-input" placeholder="08xxxxxxxxxx" autocomplete="tel"
+                maxlength="15">
               <div class="field-error" id="err-nohp"></div>
             </div>
 
             <!-- Email -->
             <div class="form-group">
               <label class="form-label" for="email">Email<span class="required">*</span></label>
-              <input type="email" id="email" name="email" class="form-input" placeholder="nama@email.com" autocomplete="email">
+              <input type="email" id="email" name="email" class="form-input" placeholder="nama@email.com"
+                autocomplete="email">
               <div class="field-error" id="err-email"></div>
             </div>
 
@@ -809,14 +934,16 @@
             <!-- Alamat -->
             <div class="form-group">
               <label class="form-label" for="alamat">Alamat<span class="required">*</span></label>
-              <textarea id="alamat" name="alamat" class="form-textarea" placeholder="Masukkan alamat lengkap" maxlength="200"></textarea>
+              <textarea id="alamat" name="alamat" class="form-textarea" placeholder="Masukkan alamat lengkap"
+                maxlength="200"></textarea>
               <div class="field-error" id="err-alamat"></div>
             </div>
 
             <!-- Pekerjaan/Instansi -->
             <div class="form-group">
               <label class="form-label" for="pekerjaan">Pekerjaan / Instansi<span class="required">*</span></label>
-              <input type="text" id="pekerjaan" name="pekerjaan" class="form-input" placeholder="Contoh: Guru di SMAN 1 Palembang" maxlength="100">
+              <input type="text" id="pekerjaan" name="pekerjaan" class="form-input"
+                placeholder="Contoh: Guru di SMAN 1 Palembang" maxlength="100">
               <div class="field-error" id="err-pekerjaan"></div>
             </div>
 
@@ -824,7 +951,11 @@
             <button type="submit" class="submit-btn" id="submit-btn">
               <span class="spinner"></span>
               <span class="btn-text">
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                  stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14" />
+                  <polyline points="22 4 12 14.01 9 11.01" />
+                </svg>
                 Daftar Sekarang
               </span>
             </button>
@@ -836,24 +967,42 @@
       <!-- Success Screen -->
       <div class="success-screen" id="success-screen">
         <div class="success-icon-wrap">
-          <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+          <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+            stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="20 6 9 17 4 12" />
+          </svg>
         </div>
         <div class="success-badge">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+            stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="20 6 9 17 4 12" />
+          </svg>
           Berhasil Terdaftar
         </div>
         <h2 class="success-title">Alhamdulillah!</h2>
         <p class="success-name" id="success-name"></p>
         <p class="success-message">
-          Anda telah berhasil terdaftar sebagai peserta Simposium Alumni UIN Raden Fatah Palembang. Silakan tunjukkan halaman ini kepada petugas saat registrasi ulang.
+          Anda telah berhasil terdaftar sebagai peserta Simposium Alumni UIN Raden Fatah Palembang. Silakan tunjukkan
+          halaman ini kepada petugas saat registrasi ulang.
         </p>
         <div class="success-actions">
           <button class="success-action-btn primary" onclick="window.print()">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 6 2 18 2 18 9"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect width="12" height="8" x="6" y="14"/></svg>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+              stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="6 9 6 2 18 2 18 9" />
+              <path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2" />
+              <rect width="12" height="8" x="6" y="14" />
+            </svg>
             Cetak Bukti Pendaftaran
           </button>
           <button class="success-action-btn secondary" onclick="resetForm()">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12a9 9 0 0 1 9-9 9.75 9.75 0 0 1 6.74 2.74L21 8"/><path d="M21 3v5h-5"/><path d="M21 12a9 9 0 0 1-9 9 9.75 9.75 0 0 1-6.74-2.74L3 16"/><path d="M8 16H3v5"/></svg>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+              stroke-linecap="round" stroke-linejoin="round">
+              <path d="M3 12a9 9 0 0 1 9-9 9.75 9.75 0 0 1 6.74 2.74L21 8" />
+              <path d="M21 3v5h-5" />
+              <path d="M21 12a9 9 0 0 1-9 9 9.75 9.75 0 0 1-6.74-2.74L3 16" />
+              <path d="M8 16H3v5" />
+            </svg>
             Daftar dengan Data Lain
           </button>
         </div>
@@ -862,7 +1011,11 @@
       <!-- Already Registered Screen -->
       <div class="already-screen" id="already-screen">
         <div class="already-icon-wrap">
-          <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#B45309" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+          <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#B45309" stroke-width="2"
+            stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="10" />
+            <polyline points="12 6 12 12 16 14" />
+          </svg>
         </div>
         <h2 class="already-title">Sudah Terdaftar</h2>
         <p class="already-name" id="already-name"></p>
@@ -870,7 +1023,12 @@
           Nomor HP ini sudah terdaftar. Jika ada kesalahan data, silakan hubungi petugas.
         </p>
         <button class="already-btn" onclick="window.print()">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 6 2 18 2 18 9"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect width="12" height="8" x="6" y="14"/></svg>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+            stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="6 9 6 2 18 2 18 9" />
+            <path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2" />
+            <rect width="12" height="8" x="6" y="14" />
+          </svg>
           Cetak Bukti Pendaftaran
         </button>
       </div>
@@ -1213,25 +1371,24 @@
         pekerjaan: document.getElementById('pekerjaan').value.trim()
       };
 
+      // Build URL with form data as query params (GET request - better CORS support)
+      const params = new URLSearchParams({
+        action: 'register',
+        nama: formData.nama,
+        nohp: formData.nohp,
+        email: formData.email,
+        tahun_masuk: formData.tahun_masuk,
+        fakultas: formData.fakultas,
+        jurusan: formData.jurusan,
+        alamat: formData.alamat,
+        pekerjaan: formData.pekerjaan
+      });
+
+      // AbortController untuk timeout
+      const controller = new AbortController();
+      const timeoutId = setTimeout(() => controller.abort(), 20000); // 20 detik timeout
+
       try {
-        // Build URL with form data as query params (GET request - better CORS support)
-        const params = new URLSearchParams({
-          action: 'register',
-          nama: formData.nama,
-          nohp: formData.nohp,
-          email: formData.email,
-          tahun_masuk: formData.tahun_masuk,
-          fakultas: formData.fakultas,
-          jurusan: formData.jurusan,
-          alamat: formData.alamat,
-          pekerjaan: formData.pekerjaan
-        });
-
-        // AbortController untuk timeout
-        const controller = new AbortController();
-        const timeoutId = setTimeout(() => controller.abort(), 20000); // 20 detik timeout
-
-        try {
           const res = await fetch(`${CONFIG.API_URL}?${params.toString()}`, {
             method: 'GET',
             headers: { 'Accept': 'application/json' },
@@ -1252,19 +1409,19 @@
             btn.disabled = false;
             showToast(json.message || 'Terjadi kesalahan. Silakan coba lagi.', 'error');
           }
-        } catch (err) {
-          clearTimeout(timeoutId);
-          if (err.name === 'AbortError') {
-            onRegistrationSuccess(formData.nama, formData.nohp);
-          } else {
-            console.error('Submission error:', err);
-            btn.classList.remove('loading');
-            btn.disabled = false;
-            showToast('Gagal mengirim data. Periksa koneksi internet.', 'error');
-          }
+      } catch (err) {
+        clearTimeout(timeoutId);
+        if (err.name === 'AbortError') {
+          onRegistrationSuccess(formData.nama, formData.nohp);
+        } else {
+          console.error('Submission error:', err);
+          btn.classList.remove('loading');
+          btn.disabled = false;
+          showToast('Gagal mengirim data. Periksa koneksi internet.', 'error');
         }
       }
     }
+
 
     function onRegistrationSuccess(nama, nohp) {
       // Save to localStorage
@@ -1311,7 +1468,7 @@
             aspectRatio: 1
           },
           onScanSuccess,
-          () => {} // ignore scan failures
+          () => { } // ignore scan failures
         );
 
         scannerRunning = true;
@@ -1363,4 +1520,5 @@
 
   </script>
 </body>
+
 </html>
