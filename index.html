@@ -107,24 +107,20 @@
       text-align: center;
     }
 
-    .header-emblem {
-      width: 96px;
-      height: 96px;
+    .header-logo-wrap {
+      width: 100px;
+      height: 100px;
       margin: 0 auto 20px;
-      background: rgba(255, 255, 255, 0.15);
-      border-radius: 50%;
       display: flex;
       align-items: center;
       justify-content: center;
-      backdrop-filter: blur(8px);
-      border: 2px solid rgba(255, 255, 255, 0.25);
-      overflow: hidden;
     }
 
-    .header-emblem img {
+    .header-logo-img {
       width: 100%;
       height: 100%;
       object-fit: contain;
+      filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.15));
     }
 
     .header-tag {
@@ -699,9 +695,9 @@
         padding: 48px 32px 44px;
       }
 
-      .header-emblem {
-        width: 108px;
-        height: 108px;
+      .header-logo-wrap {
+        width: 120px;
+        height: 120px;
       }
 
       .main {
@@ -748,8 +744,8 @@
   <!-- Header -->
   <header class="header pattern-bg">
     <div class="header-inner">
-      <div class="header-emblem">
-        <img src="logo-uin.png" alt="Logo UIN Raden Fatah">
+      <div class="header-logo-wrap">
+        <img src="logo-uin.png" alt="Logo UIN Raden Fatah" class="header-logo-img">
       </div>
       <div class="header-tag">2026</div>
       <h1>Simposium Alumni UIN Raden Fatah Palembang</h1>
