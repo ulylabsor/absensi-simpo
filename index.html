@@ -1,18 +1,27 @@
 <!DOCTYPE html>
 <html lang="id">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
   <meta name="theme-color" content="#006D32">
   <meta name="description" content="Absensi Online Simposium Alumni UIN Raden Fatah Palembang">
-  <title>Simposium Alumni UIN Raden Fatah Palembang</title>
+  <title>Simposium Alumni <br>UIN Raden Fatah Palembang</title>
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Cormorant+Garamond:wght@600;700&display=swap" rel="stylesheet">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Cormorant+Garamond:wght@600;700&display=swap"
+    rel="stylesheet">
 
   <style>
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
 
     :root {
       --primary: #006D32;
@@ -28,8 +37,8 @@
       --success: #10B981;
       --error: #EF4444;
       --border: #E2E8F0;
-      --shadow: 0 4px 24px rgba(0,0,0,0.06);
-      --shadow-lg: 0 12px 40px rgba(0,0,0,0.1);
+      --shadow: 0 4px 24px rgba(0, 0, 0, 0.06);
+      --shadow-lg: 0 12px 40px rgba(0, 0, 0, 0.1);
       --radius: 24px;
       --radius-sm: 16px;
       --radius-xs: 12px;
@@ -37,7 +46,9 @@
       --font-heading: 'Cormorant Garamond', serif;
     }
 
-    html { scroll-behavior: smooth; }
+    html {
+      scroll-behavior: smooth;
+    }
 
     body {
       font-family: var(--font-body);
@@ -59,7 +70,9 @@
     .header::before {
       content: '';
       position: absolute;
-      top: 0; left: 0; right: 0;
+      top: 0;
+      left: 0;
+      right: 0;
       height: 3px;
       background: linear-gradient(90deg, var(--accent), #FFD54F 50%, var(--accent));
     }
@@ -76,17 +89,21 @@
 
     .header-glow {
       position: absolute;
-      top: -80px; right: -80px;
-      width: 350px; height: 350px;
-      background: radial-gradient(circle, rgba(255,179,0,0.18) 0%, transparent 65%);
+      top: -80px;
+      right: -80px;
+      width: 350px;
+      height: 350px;
+      background: radial-gradient(circle, rgba(255, 179, 0, 0.18) 0%, transparent 65%);
       pointer-events: none;
     }
 
     .header-glow-2 {
       position: absolute;
-      bottom: -40px; left: -40px;
-      width: 250px; height: 250px;
-      background: radial-gradient(circle, rgba(255,255,255,0.06) 0%, transparent 65%);
+      bottom: -40px;
+      left: -40px;
+      width: 250px;
+      height: 250px;
+      background: radial-gradient(circle, rgba(255, 255, 255, 0.06) 0%, transparent 65%);
       pointer-events: none;
     }
 
@@ -107,15 +124,15 @@
       width: 100%;
       height: 100%;
       object-fit: contain;
-      filter: drop-shadow(0 8px 20px rgba(0,0,0,0.25));
+      filter: drop-shadow(0 8px 20px rgba(0, 0, 0, 0.25));
     }
 
     .header-badge {
       display: inline-flex;
       align-items: center;
       gap: 8px;
-      background: rgba(255,255,255,0.1);
-      border: 1px solid rgba(255,255,255,0.18);
+      background: rgba(255, 255, 255, 0.1);
+      border: 1px solid rgba(255, 255, 255, 0.18);
       padding: 6px 20px;
       border-radius: 30px;
       font-size: 0.8rem;
@@ -127,15 +144,23 @@
     }
 
     .header-badge-dot {
-      width: 7px; height: 7px;
+      width: 7px;
+      height: 7px;
       background: var(--accent);
       border-radius: 50%;
       animation: blink 2s ease-in-out infinite;
     }
 
     @keyframes blink {
-      0%, 100% { opacity: 1; }
-      50% { opacity: 0.4; }
+
+      0%,
+      100% {
+        opacity: 1;
+      }
+
+      50% {
+        opacity: 0.4;
+      }
     }
 
     .header h1 {
@@ -150,7 +175,7 @@
     .header-tagline {
       font-size: 1.05rem;
       font-weight: 500;
-      color: rgba(255,255,255,0.85);
+      color: rgba(255, 255, 255, 0.85);
       margin-bottom: 28px;
       letter-spacing: 0.3px;
     }
@@ -176,7 +201,7 @@
       gap: 8px;
       font-size: 0.88rem;
       font-weight: 500;
-      color: rgba(255,255,255,0.85);
+      color: rgba(255, 255, 255, 0.85);
     }
 
     /* ===== CONTAINER ===== */
@@ -193,10 +218,12 @@
       padding: 20px 24px;
       background: var(--card);
       border-bottom: 1px solid var(--border);
-      box-shadow: 0 2px 12px rgba(0,0,0,0.04);
+      box-shadow: 0 2px 12px rgba(0, 0, 0, 0.04);
     }
 
-    .stat-item { text-align: center; }
+    .stat-item {
+      text-align: center;
+    }
 
     .stat-value {
       font-family: var(--font-heading);
@@ -216,7 +243,9 @@
     }
 
     /* ===== MAIN ===== */
-    .main { padding: 28px 0 64px; }
+    .main {
+      padding: 28px 0 64px;
+    }
 
     /* ===== FORM CARD ===== */
     .form-card {
@@ -224,7 +253,7 @@
       border-radius: var(--radius);
       padding: 32px 28px;
       box-shadow: var(--shadow-lg);
-      border: 1px solid rgba(0,0,0,0.04);
+      border: 1px solid rgba(0, 0, 0, 0.04);
     }
 
     .form-card-header {
@@ -260,7 +289,9 @@
     }
 
     /* ===== FORM GROUP ===== */
-    .form-group { margin-bottom: 20px; }
+    .form-group {
+      margin-bottom: 20px;
+    }
 
     .form-label {
       display: block;
@@ -272,7 +303,10 @@
       letter-spacing: 0.5px;
     }
 
-    .form-label .required { color: var(--error); margin-left: 2px; }
+    .form-label .required {
+      color: var(--error);
+      margin-left: 2px;
+    }
 
     .form-input,
     .form-select,
@@ -296,7 +330,7 @@
     .form-select:focus,
     .form-textarea:focus {
       border-color: var(--primary);
-      box-shadow: 0 0 0 4px rgba(0,109,50,0.08);
+      box-shadow: 0 0 0 4px rgba(0, 109, 50, 0.08);
       background: white;
     }
 
@@ -304,7 +338,7 @@
     .form-select.error,
     .form-textarea.error {
       border-color: var(--error);
-      box-shadow: 0 0 0 4px rgba(239,68,68,0.06);
+      box-shadow: 0 0 0 4px rgba(239, 68, 68, 0.06);
     }
 
     .form-input.valid,
@@ -321,7 +355,10 @@
       cursor: pointer;
     }
 
-    .form-textarea { resize: vertical; min-height: 90px; }
+    .form-textarea {
+      resize: vertical;
+      min-height: 90px;
+    }
 
     .field-error {
       font-size: 0.8rem;
@@ -329,7 +366,10 @@
       margin-top: 6px;
       display: none;
     }
-    .field-error.show { display: block; }
+
+    .field-error.show {
+      display: block;
+    }
 
     /* ===== SUBMIT BUTTON ===== */
     .submit-btn {
@@ -354,24 +394,41 @@
 
     .submit-btn:hover:not(:disabled) {
       transform: translateY(-2px);
-      box-shadow: 0 10px 30px rgba(0,109,50,0.3);
+      box-shadow: 0 10px 30px rgba(0, 109, 50, 0.3);
     }
 
-    .submit-btn:active:not(:disabled) { transform: translateY(0); }
-    .submit-btn:disabled { opacity: 0.6; cursor: not-allowed; }
+    .submit-btn:active:not(:disabled) {
+      transform: translateY(0);
+    }
+
+    .submit-btn:disabled {
+      opacity: 0.6;
+      cursor: not-allowed;
+    }
 
     .submit-btn .spinner {
-      width: 20px; height: 20px;
-      border: 2.5px solid rgba(255,255,255,0.3);
+      width: 20px;
+      height: 20px;
+      border: 2.5px solid rgba(255, 255, 255, 0.3);
       border-top-color: white;
       border-radius: 50%;
       animation: spin 0.7s linear infinite;
       display: none;
     }
-    .submit-btn.loading .spinner { display: block; }
-    .submit-btn.loading .btn-text { display: none; }
 
-    @keyframes spin { to { transform: rotate(360deg); } }
+    .submit-btn.loading .spinner {
+      display: block;
+    }
+
+    .submit-btn.loading .btn-text {
+      display: none;
+    }
+
+    @keyframes spin {
+      to {
+        transform: rotate(360deg);
+      }
+    }
 
     /* ===== SUCCESS SCREEN ===== */
     .success-screen {
@@ -379,7 +436,10 @@
       text-align: center;
       padding: 16px 0;
     }
-    .success-screen.show { display: block; }
+
+    .success-screen.show {
+      display: block;
+    }
 
     .success-icon-wrap {
       width: 130px;
@@ -391,15 +451,26 @@
       justify-content: center;
       margin: 0 auto 28px;
       animation: popIn 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-      box-shadow: 0 0 40px rgba(16,185,129,0.2);
+      box-shadow: 0 0 40px rgba(16, 185, 129, 0.2);
     }
 
     @keyframes popIn {
-      0% { transform: scale(0); opacity: 0; }
-      100% { transform: scale(1); opacity: 1; }
+      0% {
+        transform: scale(0);
+        opacity: 0;
+      }
+
+      100% {
+        transform: scale(1);
+        opacity: 1;
+      }
     }
 
-    .success-icon-wrap svg { width: 64px; height: 64px; color: var(--success); }
+    .success-icon-wrap svg {
+      width: 64px;
+      height: 64px;
+      color: var(--success);
+    }
 
     .success-badge {
       display: inline-flex;
@@ -437,7 +508,12 @@
       margin: 0 auto 32px;
     }
 
-    .success-actions { display: flex; flex-direction: column; gap: 14px; align-items: center; }
+    .success-actions {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      align-items: center;
+    }
 
     .success-action-btn {
       padding: 15px 28px;
@@ -459,20 +535,31 @@
     .success-action-btn.primary {
       background: var(--primary);
       color: white;
-      box-shadow: 0 4px 16px rgba(0,109,50,0.25);
+      box-shadow: 0 4px 16px rgba(0, 109, 50, 0.25);
     }
-    .success-action-btn.primary:hover { background: var(--primary-dark); }
+
+    .success-action-btn.primary:hover {
+      background: var(--primary-dark);
+    }
 
     .success-action-btn.secondary {
       background: var(--bg);
       color: var(--text);
       border: 1.5px solid var(--border);
     }
-    .success-action-btn.secondary:hover { background: #f0f0f0; }
+
+    .success-action-btn.secondary:hover {
+      background: #f0f0f0;
+    }
 
     /* ===== FORM WRAPPER ===== */
-    #form-wrapper { display: block; }
-    #form-wrapper.hide { display: none; }
+    #form-wrapper {
+      display: block;
+    }
+
+    #form-wrapper.hide {
+      display: none;
+    }
 
     /* ===== FOOTER ===== */
     .footer {
@@ -483,7 +570,11 @@
       border-top: 1px solid var(--border);
       background: var(--card);
     }
-    .footer-brand { font-weight: 600; color: var(--primary); }
+
+    .footer-brand {
+      font-weight: 600;
+      color: var(--primary);
+    }
 
     /* ===== TOAST ===== */
     .toast {
@@ -503,21 +594,49 @@
       max-width: calc(100% - 40px);
       text-align: center;
     }
-    .toast.show { transform: translateX(-50%) translateY(0); }
-    .toast.error { background: var(--error); }
+
+    .toast.show {
+      transform: translateX(-50%) translateY(0);
+    }
+
+    .toast.error {
+      background: var(--error);
+    }
 
     /* ===== RESPONSIVE ===== */
     @media (min-width: 480px) {
-      .header-inner { padding: 60px 32px 56px; }
-      .header-logo-wrap { width: 130px; height: 130px; }
-      .main { padding: 36px 0 80px; }
-      .form-card { padding: 40px 36px; }
-      .form-card-header h2 { font-size: 2.1rem; }
-      .success-title { font-size: 2.8rem; }
-      .success-message { max-width: 480px; }
+      .header-inner {
+        padding: 60px 32px 56px;
+      }
+
+      .header-logo-wrap {
+        width: 130px;
+        height: 130px;
+      }
+
+      .main {
+        padding: 36px 0 80px;
+      }
+
+      .form-card {
+        padding: 40px 36px;
+      }
+
+      .form-card-header h2 {
+        font-size: 2.1rem;
+      }
+
+      .success-title {
+        font-size: 2.8rem;
+      }
+
+      .success-message {
+        max-width: 480px;
+      }
     }
   </style>
 </head>
+
 <body>
 
   <!-- Toast -->
@@ -540,11 +659,21 @@
       <div class="header-divider"></div>
       <div class="header-meta">
         <div class="header-meta-item">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="18" x="3" y="4" rx="2" ry="2"/><line x1="16" x2="16" y1="2" y2="6"/><line x1="8" x2="8" y1="2" y2="6"/><line x1="3" x2="21" y1="10" y2="10"/></svg>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+            stroke-linecap="round" stroke-linejoin="round">
+            <rect width="18" height="18" x="3" y="4" rx="2" ry="2" />
+            <line x1="16" x2="16" y1="2" y2="6" />
+            <line x1="8" x2="8" y1="2" y2="6" />
+            <line x1="3" x2="21" y1="10" y2="10" />
+          </svg>
           2026
         </div>
         <div class="header-meta-item">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+            stroke-linecap="round" stroke-linejoin="round">
+            <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z" />
+            <circle cx="12" cy="10" r="3" />
+          </svg>
           UIN Raden Fatah Palembang
         </div>
       </div>
@@ -570,9 +699,15 @@
         <div class="form-card" id="form-card">
           <div class="form-card-header">
             <div class="form-card-header-icon">
-              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round">
+                <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" />
+                <circle cx="9" cy="7" r="4" />
+                <path d="M22 21v-2a4 4 0 0 0-3-3.87" />
+                <path d="M16 3.13a4 4 0 0 1 0 7.75" />
+              </svg>
             </div>
-            <h2>Formulir Pendaftaran</h2>
+            <h2>Formulir Absensi</h2>
             <p>Isi data di bawah untuk melakukan absensi</p>
           </div>
 
@@ -581,21 +716,24 @@
             <!-- Nama -->
             <div class="form-group">
               <label class="form-label" for="nama">Nama Lengkap<span class="required">*</span></label>
-              <input type="text" id="nama" name="nama" class="form-input" placeholder="Masukkan nama lengkap Anda" autocomplete="name" maxlength="100">
+              <input type="text" id="nama" name="nama" class="form-input" placeholder="Masukkan nama lengkap Anda"
+                autocomplete="name" maxlength="100">
               <div class="field-error" id="err-nama"></div>
             </div>
 
             <!-- No HP -->
             <div class="form-group">
               <label class="form-label" for="nohp">No HP / WhatsApp<span class="required">*</span></label>
-              <input type="tel" id="nohp" name="nohp" class="form-input" placeholder="08xxxxxxxxxx" autocomplete="tel" maxlength="15">
+              <input type="tel" id="nohp" name="nohp" class="form-input" placeholder="08xxxxxxxxxx" autocomplete="tel"
+                maxlength="15">
               <div class="field-error" id="err-nohp"></div>
             </div>
 
             <!-- Email -->
             <div class="form-group">
               <label class="form-label" for="email">Email<span class="required">*</span></label>
-              <input type="email" id="email" name="email" class="form-input" placeholder="nama@email.com" autocomplete="email">
+              <input type="email" id="email" name="email" class="form-input" placeholder="nama@email.com"
+                autocomplete="email">
               <div class="field-error" id="err-email"></div>
             </div>
 
@@ -613,15 +751,16 @@
               <label class="form-label" for="fakultas">Fakultas<span class="required">*</span></label>
               <select id="fakultas" name="fakultas" class="form-select">
                 <option value="">Pilih Fakultas</option>
-                <option value="Ushuluddin dan Pemikiran Islam">Ushuluddin dan Pemikiran Islam</option>
-                <option value="Tarbiyah dan Keguruan">Tarbiyah dan Keguruan</option>
-                <option value="Syari'ah dan Hukum">Syari'ah dan Hukum</option>
                 <option value="Adab dan Humaniora">Adab dan Humaniora</option>
                 <option value="Dakwah dan Komunikasi">Dakwah dan Komunikasi</option>
+                <option value="Ekonomi dan Bisnis Islam">Ekonomi dan Bisnis Islam</option>
+                <option value="Ilmu Sosial dan Ilmu Politik">Ilmu Sosial dan Ilmu Politik</option>
+                <option value="Ilmu Tarbiyah dan Keguruan">Ilmu Tarbiyah dan Keguruan</option>
                 <option value="Psikologi">Psikologi</option>
                 <option value="Sains dan Teknologi">Sains dan Teknologi</option>
-                <option value="Ekonomi dan Bisnis Islam">Ekonomi dan Bisnis Islam</option>
-                <option value="Pasca Sarjana">Pasca Sarjana</option>
+                <option value="Syariah dan Hukum">Syariah dan Hukum</option>
+                <option value="Ushuluddin dan Pemikiran Islam">Ushuluddin dan Pemikiran Islam</option>
+                <option value="Pascasarjana">Pascasarjana</option>
               </select>
               <div class="field-error" id="err-fakultas"></div>
             </div>
@@ -632,20 +771,26 @@
               <select id="jurusan" name="jurusan" class="form-select" disabled>
                 <option value="">Pilih fakultas terlebih dahulu</option>
               </select>
+              <div id="jurusan-manual-wrap" style="display: none; margin-top: 10px;">
+                <input type="text" id="jurusan_manual" class="form-input" placeholder="Ketik nama prodi/jurusan Anda"
+                  maxlength="100">
+              </div>
               <div class="field-error" id="err-jurusan"></div>
             </div>
 
             <!-- Alamat -->
             <div class="form-group">
               <label class="form-label" for="alamat">Alamat<span class="required">*</span></label>
-              <textarea id="alamat" name="alamat" class="form-textarea" placeholder="Masukkan alamat lengkap" maxlength="200"></textarea>
+              <textarea id="alamat" name="alamat" class="form-textarea" placeholder="Masukkan alamat lengkap"
+                maxlength="200"></textarea>
               <div class="field-error" id="err-alamat"></div>
             </div>
 
             <!-- Pekerjaan/Instansi -->
             <div class="form-group">
               <label class="form-label" for="pekerjaan">Pekerjaan / Instansi<span class="required">*</span></label>
-              <input type="text" id="pekerjaan" name="pekerjaan" class="form-input" placeholder="Contoh: Guru di SMAN 1 Palembang" maxlength="100">
+              <input type="text" id="pekerjaan" name="pekerjaan" class="form-input"
+                placeholder="Contoh: Guru di SMAN 1 Palembang" maxlength="100">
               <div class="field-error" id="err-pekerjaan"></div>
             </div>
 
@@ -653,8 +798,12 @@
             <button type="submit" class="submit-btn" id="submit-btn">
               <span class="spinner"></span>
               <span class="btn-text">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
-                Daftar Sekarang
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+                  stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14" />
+                  <polyline points="22 4 12 14.01 9 11.01" />
+                </svg>
+                Submit
               </span>
             </button>
           </form>
@@ -664,25 +813,43 @@
       <!-- Success Screen -->
       <div class="success-screen" id="success-screen">
         <div class="success-icon-wrap">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+            stroke-linejoin="round">
+            <polyline points="20 6 9 17 4 12" />
+          </svg>
         </div>
         <div class="success-badge">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
-          Berhasil Terdaftar
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+            stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="20 6 9 17 4 12" />
+          </svg>
+          Berhasil Terkirim
         </div>
         <h2 class="success-title">Alhamdulillah!</h2>
         <p class="success-name" id="success-name"></p>
         <p class="success-message">
-          Anda telah berhasil terdaftar sebagai peserta Simposium Alumni UIN Raden Fatah Palembang. Silakan tunjukkan halaman ini kepada petugas saat registrasi ulang.
+          Anda telah berhasil terdaftar sebagai peserta Simposium Alumni UIN Raden Fatah Palembang. Silakan tunjukkan
+          halaman ini kepada petugas saat registrasi ulang.
         </p>
         <div class="success-actions">
           <button class="success-action-btn primary" onclick="window.print()">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 6 2 18 2 18 9"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect width="12" height="8" x="6" y="14"/></svg>
-            Cetak Bukti Pendaftaran
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+              stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="6 9 6 2 18 2 18 9" />
+              <path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2" />
+              <rect width="12" height="8" x="6" y="14" />
+            </svg>
+            Cetak Bukti Absensi
           </button>
           <button class="success-action-btn secondary" onclick="showFormAgain()">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12a9 9 0 0 1 9-9 9.75 9.75 0 0 1 6.74 2.74L21 8"/><path d="M21 3v5h-5"/><path d="M21 12a9 9 0 0 1-9 9 9.75 9.75 0 0 1-6.74-2.74L3 16"/><path d="M8 16H3v5"/></svg>
-            Daftar dengan Data Lain
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+              stroke-linecap="round" stroke-linejoin="round">
+              <path d="M3 12a9 9 0 0 1 9-9 9.75 9.75 0 0 1 6.74 2.74L21 8" />
+              <path d="M21 3v5h-5" />
+              <path d="M21 12a9 9 0 0 1-9 9 9.75 9.75 0 0 1-6.74-2.74L3 16" />
+              <path d="M8 16H3v5" />
+            </svg>
+            Absensi dengan Data Lain
           </button>
         </div>
       </div>
@@ -706,80 +873,76 @@
     // DATA
     // ========================
     const FAKULTAS_JURUSAN = {
-      'Ushuluddin dan Pemikiran Islam': [
-        'Aqidah dan Filsafat Islam',
-        'Ilmu Al-Qur\'an dan Tafsir',
-        'Perbandingan Agama',
-        'Studi Agama-Agama',
-        'Tasawuf dan Psikoterapi'
-      ],
-      'Tarbiyah dan Keguruan': [
-        'Pendidikan Agama Islam',
-        'Pendidikan Bahasa Arab',
-        'Pendidikan Guru Madrasah Ibtidaiyah (PGMI)',
-        'Pendidikan Islam Anak Usia Dini (PIAUD)',
-        'Manajemen Pendidikan Islam',
-        'Tadris Bahasa Indonesia',
-        'Tadris Bahasa Inggris',
-        'Tadris Matematika',
-        'Tadris IPA',
-        'Tadris IPS'
-      ],
-      'Syari\'ah dan Hukum': [
-        'Hukum Keluarga Islam (Ahwal al-Syakhshiyyah)',
-        'Hukum Ekonomi Islam (Muamalah)',
-        'Hukum Tata Negara',
-        'Hukum Pidana Islam',
-        'Ilmu Hukum',
-        'Komunikasi dan Broadcasting Islam'
-      ],
       'Adab dan Humaniora': [
-        'Ilmu Perpustakaan',
-        'Sastra Indonesia',
-        'Sastra Inggris',
-        'Sejarah Peradaban Islam',
-        'Administrasi Perkantoran'
+        'Bahasa dan Sastra Arab (S1)',
+        'Ilmu Perpustakaan (S1)',
+        'Politik Islam (S1)',
+        'Sejarah Peradaban Islam (S1)',
+        'Sejarah Peradaban Islam (S2)'
       ],
       'Dakwah dan Komunikasi': [
-        'Ilmu Komunikasi',
-        'Pengembangan Masyarakat Islam',
-        'Manajemen Dakwah',
-        'Konseling dan Bimbingan Islam',
-        'Hubungan Masyarakat'
-      ],
-      'Psikologi': [
-        'Psikologi',
-        'Psikologi Islam'
-      ],
-      'Sains dan Teknologi': [
-        'Matematika',
-        'Fisika',
-        'Kimia',
-        'Biologi',
-        'Informatika',
-        'Sistem Informasi',
-        'Teknologi Hasil Pertanian'
+        'Bimbingan Penyuluhan Islam (S1)',
+        'Jurnalistik (S1)',
+        'Komunikasi dan Penyiaran Islam (S1)',
+        'Manajemen Dakwah (S1)',
+        'Pengembangan Masyarakat Islam (S1)'
       ],
       'Ekonomi dan Bisnis Islam': [
-        'Akuntansi',
-        'Manajemen',
-        'Ekonomi Pembangunan',
-        'Perbankan Syariah',
-        'Bisnis Digital',
-        'Sharia Economic'
+        'Ekonomi Syariah (S1)',
+        'Ekonomi Syariah (S2)',
+        'Manajemen Zakat dan Wakaf (S1)',
+        'Perbankan Syariah (S1)'
       ],
-      'Pasca Sarjana': [
-        'Magister Pendidikan Islam',
-        'Magister Hukum Islam',
-        'Magister Komunikasi dan Penyiaran Islam',
-        'Magister Manajemen Pendidikan Islam',
-        'Magister Studi Islam',
-        'Magister Ekonomi Syariah',
-        'Doktor Pendidikan Islam',
-        'Doktor Hukum Islam',
-        'Doktor Studi Islam'
+      'Ilmu Sosial dan Ilmu Politik': [
+        'Ilmu Komunikasi (S1)',
+        'Ilmu Politik (S1)'
+      ],
+      'Ilmu Tarbiyah dan Keguruan': [
+        'Manajemen Pendidikan Islam (S1)',
+        'Manajemen Pendidikan Islam (S2)',
+        'Pendidikan Agama Islam (S1)',
+        'Pendidikan Agama Islam (S2)',
+        'Pendidikan Bahasa Arab (S1)',
+        'Pendidikan Bahasa Inggris (S1)',
+        'Pendidikan Biologi (S1)',
+        'Pendidikan Fisika (S1)',
+        'Pendidikan Guru Madrasah Ibtidaiyah (S1)',
+        'Pendidikan Islam Anak Usia Dini / PIAUD (S1)',
+        'Pendidikan Kimia (S1)',
+        'Pendidikan Matematika (S1)',
+        'Pendidikan Profesi Guru / PPG (KPA)'
+      ],
+      'Psikologi': [
+        'Psikologi Islam (S1)'
+      ],
+      'Sains dan Teknologi': [
+        'Biologi (S1)',
+        'Kimia (S1)',
+        'Sistem Informasi (S1)'
+      ],
+      'Syariah dan Hukum': [
+        'Hukum Ekonomi Syariah / Muamalah (S1)',
+        'Hukum Keluarga Islam / Ahwal Syakhshiyyah (S1)',
+        'Hukum Pidana Islam / Jinayah (S1)',
+        'Hukum Tata Negara (S2)',
+        'Perbandingan Mazhab (S1)'
+      ],
+      'Ushuluddin dan Pemikiran Islam': [
+        'Aqidah dan Filsafat Islam (S1)',
+        'Ilmu Al-Qur\'an dan Tafsir (S1)',
+        'Ilmu Al-Qur\'an dan Tafsir (S2)',
+        'Ilmu Hadis (S1)',
+        'Studi Agama-Agama (S1)',
+        'Tasawuf dan Psikoterapi (S1)'
+      ],
+      'Pascasarjana': [
+        'Pendidikan Agama Islam (S3)',
+        'Peradaban Islam (S3)',
+        'Studi Islam (S2)'
       ]
     };
+
+    const MANUAL_KEY = '__manual__';
 
     const TAHUN_OPTIONS = [];
     const currentYear = new Date().getFullYear();
@@ -808,15 +971,24 @@
     function populateJurusan() {
       const fakSelect = document.getElementById('fakultas');
       const jurSelect = document.getElementById('jurusan');
+      const manualWrap = document.getElementById('jurusan-manual-wrap');
+      const manualInput = document.getElementById('jurusan_manual');
 
       fakSelect.addEventListener('change', () => {
         const fak = fakSelect.value;
         clearField(jurSelect, 'err-jurusan');
+
+        // Hide manual input
+        manualWrap.style.display = 'none';
+        manualInput.value = '';
+        jurSelect.value = '';
+
         if (!fak) {
           jurSelect.disabled = true;
           jurSelect.innerHTML = '<option value="">Pilih fakultas terlebih dahulu</option>';
           return;
         }
+
         const list = FAKULTAS_JURUSAN[fak] || [];
         jurSelect.innerHTML = '<option value="">Pilih Jurusan / Prodi</option>';
         list.forEach(j => {
@@ -825,7 +997,24 @@
           opt.textContent = j;
           jurSelect.appendChild(opt);
         });
+
+        // Add manual option
+        const manualOpt = document.createElement('option');
+        manualOpt.value = MANUAL_KEY;
+        manualOpt.textContent = 'Lainnya (Input Manual)';
+        jurSelect.appendChild(manualOpt);
+
         jurSelect.disabled = false;
+      });
+
+      jurSelect.addEventListener('change', () => {
+        if (jurSelect.value === MANUAL_KEY) {
+          manualWrap.style.display = 'block';
+          manualInput.focus();
+        } else {
+          manualWrap.style.display = 'none';
+          manualInput.value = '';
+        }
       });
     }
 
@@ -881,7 +1070,12 @@
           if (!val) error = 'Pilih fakultas';
           break;
         case 'jurusan':
-          if (!val) error = 'Pilih jurusan/prodi';
+          if (!val) {
+            error = 'Pilih atau ketik jurusan/prodi';
+          } else if (val === MANUAL_KEY) {
+            const manual = document.getElementById('jurusan_manual').value.trim();
+            if (!manual || manual.length < 3) error = 'Ketik nama jurusan/prodi minimal 3 karakter';
+          }
           break;
         case 'alamat':
           if (!val) error = 'Alamat harus diisi';
@@ -945,7 +1139,9 @@
         email: document.getElementById('email').value.trim(),
         tahun_masuk: document.getElementById('tahun_masuk').value,
         fakultas: document.getElementById('fakultas').value,
-        jurusan: document.getElementById('jurusan').value,
+        jurusan: document.getElementById('jurusan').value === MANUAL_KEY
+          ? document.getElementById('jurusan_manual').value.trim()
+          : document.getElementById('jurusan').value,
         alamat: document.getElementById('alamat').value.trim(),
         pekerjaan: document.getElementById('pekerjaan').value.trim()
       };
@@ -1000,6 +1196,8 @@
       document.getElementById('reg-form').reset();
       document.getElementById('jurusan').innerHTML = '<option value="">Pilih fakultas terlebih dahulu</option>';
       document.getElementById('jurusan').disabled = true;
+      document.getElementById('jurusan-manual-wrap').style.display = 'none';
+      document.getElementById('jurusan_manual').value = '';
       document.getElementById('form-card').scrollIntoView({ behavior: 'smooth' });
     }
 
@@ -1015,4 +1213,5 @@
     }
   </script>
 </body>
+
 </html>
