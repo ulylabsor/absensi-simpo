@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="id">
-
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
@@ -10,46 +9,35 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link
-    href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Cormorant+Garamond:wght@600;700&display=swap"
-    rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Cormorant+Garamond:wght@600;700&display=swap" rel="stylesheet">
 
   <style>
-    *,
-    *::before,
-    *::after {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     :root {
       --primary: #006D32;
       --primary-dark: #004d25;
       --primary-light: #E8F5E9;
-      --primary-lighter: #f1f8f1;
       --accent: #FFB300;
       --accent-light: #FFF8E1;
       --dark: #1A1A2E;
-      --bg: #FAFAF8;
+      --bg: #F8FAF7;
       --card: #FFFFFF;
-      --text: #212121;
-      --text-secondary: #6B7280;
+      --text: #1a1a1a;
+      --text-secondary: #64748b;
       --success: #10B981;
       --error: #EF4444;
-      --border: #E5E7EB;
-      --shadow: 0 4px 32px rgba(0, 109, 50, 0.1);
-      --shadow-lg: 0 8px 48px rgba(0, 109, 50, 0.15);
-      --radius: 20px;
-      --radius-sm: 12px;
-      --radius-xs: 8px;
+      --border: #E2E8F0;
+      --shadow: 0 4px 24px rgba(0,0,0,0.06);
+      --shadow-lg: 0 12px 40px rgba(0,0,0,0.1);
+      --radius: 24px;
+      --radius-sm: 16px;
+      --radius-xs: 12px;
       --font-body: 'Plus Jakarta Sans', sans-serif;
       --font-heading: 'Cormorant Garamond', serif;
     }
 
-    html {
-      scroll-behavior: smooth;
-    }
+    html { scroll-behavior: smooth; }
 
     body {
       font-family: var(--font-body);
@@ -57,305 +45,210 @@
       color: var(--text);
       min-height: 100vh;
       -webkit-font-smoothing: antialiased;
-      -moz-osx-font-smoothing: grayscale;
     }
 
-    /* Islamic Geometric Pattern */
-    .pattern-bg {
-      position: relative;
-      overflow: hidden;
-    }
-
-    .pattern-bg::before {
-      content: '';
-      position: absolute;
-      top: -50%;
-      right: -30%;
-      width: 500px;
-      height: 500px;
-      background: radial-gradient(circle at 30% 30%, rgba(0, 109, 50, 0.04) 0%, transparent 60%),
-        repeating-conic-gradient(from 0deg at 50% 50%, transparent 0deg 10deg, rgba(0, 109, 50, 0.02) 10deg 20deg);
-      border-radius: 50%;
-      pointer-events: none;
-    }
-
-    .pattern-bg::after {
-      content: '';
-      position: absolute;
-      bottom: -30%;
-      left: -20%;
-      width: 400px;
-      height: 400px;
-      background: radial-gradient(circle, rgba(255, 179, 0, 0.04) 0%, transparent 60%);
-      border-radius: 50%;
-      pointer-events: none;
-    }
-
-    /* Header */
+    /* ===== HEADER ===== */
     .header {
-      background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+      background: linear-gradient(160deg, #006D32 0%, #004d25 50%, #003318 100%);
       color: white;
-      padding: 0;
       position: relative;
       overflow: hidden;
+    }
+
+    /* Gold accent bar top */
+    .header::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, var(--accent), #FFD54F 50%, var(--accent));
+    }
+
+    /* Subtle pattern overlay */
+    .header::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      opacity: 0.03;
+      background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23ffffff'%3E%3Cpath d='M30 0L60 30L30 60L0 30z'/%3E%3C/g%3E%3C/svg%3E");
+      pointer-events: none;
+    }
+
+    .header-glow {
+      position: absolute;
+      top: -80px; right: -80px;
+      width: 350px; height: 350px;
+      background: radial-gradient(circle, rgba(255,179,0,0.18) 0%, transparent 65%);
+      pointer-events: none;
+    }
+
+    .header-glow-2 {
+      position: absolute;
+      bottom: -40px; left: -40px;
+      width: 250px; height: 250px;
+      background: radial-gradient(circle, rgba(255,255,255,0.06) 0%, transparent 65%);
+      pointer-events: none;
     }
 
     .header-inner {
       position: relative;
       z-index: 1;
-      padding: 40px 24px 36px;
+      padding: 52px 24px 48px;
       text-align: center;
     }
 
     .header-logo-wrap {
-      width: 100px;
-      height: 100px;
-      margin: 0 auto 20px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
+      width: 110px;
+      height: 110px;
+      margin: 0 auto 24px;
     }
 
     .header-logo-img {
       width: 100%;
       height: 100%;
       object-fit: contain;
-      filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.15));
+      filter: drop-shadow(0 8px 20px rgba(0,0,0,0.25));
     }
 
-    .header-tag {
-      display: inline-block;
-      background: rgba(255, 255, 255, 0.18);
-      border: 1px solid rgba(255, 255, 255, 0.25);
-      padding: 5px 18px;
-      border-radius: 20px;
+    .header-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(255,255,255,0.1);
+      border: 1px solid rgba(255,255,255,0.18);
+      padding: 6px 20px;
+      border-radius: 30px;
       font-size: 0.8rem;
       font-weight: 600;
-      letter-spacing: 0.5px;
-      margin-bottom: 14px;
+      letter-spacing: 1.5px;
+      margin-bottom: 18px;
       text-transform: uppercase;
+      backdrop-filter: blur(10px);
+    }
+
+    .header-badge-dot {
+      width: 7px; height: 7px;
+      background: var(--accent);
+      border-radius: 50%;
+      animation: blink 2s ease-in-out infinite;
+    }
+
+    @keyframes blink {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.4; }
     }
 
     .header h1 {
       font-family: var(--font-heading);
-      font-size: clamp(1.6rem, 6vw, 2.4rem);
+      font-size: clamp(1.9rem, 7vw, 2.8rem);
       font-weight: 700;
-      line-height: 1.2;
-      margin-bottom: 10px;
+      line-height: 1.15;
+      margin-bottom: 12px;
+      letter-spacing: 0.5px;
     }
 
     .header-tagline {
-      font-size: 1rem;
-      opacity: 0.9;
+      font-size: 1.05rem;
       font-weight: 500;
-      color: rgba(255, 255, 255, 0.9);
-      margin-bottom: 24px;
+      color: rgba(255,255,255,0.85);
+      margin-bottom: 28px;
+      letter-spacing: 0.3px;
     }
 
     .header-divider {
-      width: 60px;
+      width: 64px;
       height: 3px;
-      background: var(--accent);
-      margin: 0 auto 16px;
+      background: linear-gradient(90deg, transparent, var(--accent), transparent);
+      margin: 0 auto 22px;
       border-radius: 2px;
     }
 
     .header-meta {
       display: flex;
       justify-content: center;
-      gap: 24px;
+      gap: 28px;
       flex-wrap: wrap;
     }
 
     .header-meta-item {
       display: flex;
       align-items: center;
-      gap: 6px;
-      font-size: 0.85rem;
-      opacity: 0.9;
+      gap: 8px;
+      font-size: 0.88rem;
+      font-weight: 500;
+      color: rgba(255,255,255,0.85);
     }
 
-    /* Container */
+    /* ===== CONTAINER ===== */
     .container {
       max-width: 600px;
       margin: 0 auto;
-      padding: 0 16px;
+      padding: 0 20px;
     }
 
-    /* Stats Bar */
+    /* ===== STATS BAR ===== */
     .stats-bar {
       display: flex;
       justify-content: center;
-      gap: 40px;
-      padding: 14px 20px;
+      padding: 20px 24px;
       background: var(--card);
       border-bottom: 1px solid var(--border);
+      box-shadow: 0 2px 12px rgba(0,0,0,0.04);
     }
 
-    .stat-item {
-      text-align: center;
-    }
+    .stat-item { text-align: center; }
 
     .stat-value {
       font-family: var(--font-heading);
-      font-size: 2rem;
+      font-size: 2.2rem;
       font-weight: 700;
       color: var(--primary);
       line-height: 1;
     }
 
     .stat-label {
-      font-size: 0.7rem;
-      text-transform: uppercase;
-      letter-spacing: 0.5px;
-      color: var(--text-secondary);
-      margin-top: 2px;
-      font-weight: 500;
-    }
-
-    /* Main Content */
-    .main {
-      padding: 20px 0 56px;
-    }
-
-    /* Scanner Section */
-    .scanner-section {
-      background: var(--card);
-      border-radius: var(--radius);
-      padding: 20px;
-      margin-bottom: 20px;
-      box-shadow: var(--shadow);
-      border: 1px solid var(--border);
-    }
-
-    .scanner-header {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      margin-bottom: 14px;
-    }
-
-    .scanner-icon {
-      width: 40px;
-      height: 40px;
-      background: var(--primary-light);
-      border-radius: var(--radius-sm);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: var(--primary);
-      flex-shrink: 0;
-    }
-
-    .scanner-title {
-      font-size: 0.95rem;
-      font-weight: 600;
-      color: var(--text);
-    }
-
-    .scanner-subtitle {
-      font-size: 0.8rem;
-      color: var(--text-secondary);
-    }
-
-    .scanner-btn {
-      width: 100%;
-      padding: 14px 20px;
-      background: var(--primary);
-      color: white;
-      border: none;
-      border-radius: var(--radius-sm);
-      font-family: var(--font-body);
-      font-size: 0.9rem;
-      font-weight: 600;
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 8px;
-      transition: background 0.2s, transform 0.1s;
-      margin-bottom: 12px;
-    }
-
-    .scanner-btn:hover {
-      background: var(--primary-dark);
-    }
-
-    .scanner-btn:active {
-      transform: scale(0.98);
-    }
-
-    .scanner-btn.secondary {
-      background: var(--bg);
-      color: var(--primary);
-      border: 1.5px solid var(--primary);
-    }
-
-    .scanner-btn.secondary:hover {
-      background: var(--primary-lighter);
-    }
-
-    #qr-reader {
-      border-radius: var(--radius-sm);
-      overflow: hidden;
-      display: none;
-      margin-bottom: 12px;
-    }
-
-    #qr-reader video {
-      border-radius: var(--radius-sm);
-    }
-
-    .scanner-status {
-      text-align: center;
-      font-size: 0.8rem;
-      color: var(--text-secondary);
-      min-height: 20px;
-    }
-
-    /* Divider */
-    .section-divider {
-      display: flex;
-      align-items: center;
-      gap: 16px;
-      margin: 24px 0;
-    }
-
-    .section-divider::before,
-    .section-divider::after {
-      content: '';
-      flex: 1;
-      height: 1px;
-      background: var(--border);
-    }
-
-    .section-divider span {
-      font-size: 0.75rem;
-      color: var(--text-secondary);
+      font-size: 0.72rem;
       text-transform: uppercase;
       letter-spacing: 1px;
-      font-weight: 500;
-      white-space: nowrap;
+      color: var(--text-secondary);
+      margin-top: 4px;
+      font-weight: 600;
     }
 
-    /* Form Card */
+    /* ===== MAIN ===== */
+    .main { padding: 28px 0 64px; }
+
+    /* ===== FORM CARD ===== */
     .form-card {
       background: var(--card);
       border-radius: var(--radius);
-      padding: 28px 24px;
+      padding: 32px 28px;
       box-shadow: var(--shadow-lg);
-      border: 1px solid var(--border);
-      margin: 0;
+      border: 1px solid rgba(0,0,0,0.04);
     }
 
     .form-card-header {
       text-align: center;
-      margin-bottom: 28px;
+      margin-bottom: 32px;
+      padding-bottom: 24px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .form-card-header-icon {
+      width: 56px;
+      height: 56px;
+      background: var(--primary-light);
+      border-radius: 16px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 16px;
+      color: var(--primary);
     }
 
     .form-card-header h2 {
       font-family: var(--font-heading);
-      font-size: 1.8rem;
+      font-size: 1.9rem;
       font-weight: 700;
       color: var(--primary);
       margin-bottom: 6px;
@@ -366,49 +259,44 @@
       color: var(--text-secondary);
     }
 
-    /* Form Group */
-    .form-group {
-      margin-bottom: 20px;
-    }
+    /* ===== FORM GROUP ===== */
+    .form-group { margin-bottom: 20px; }
 
     .form-label {
       display: block;
-      font-size: 0.9rem;
+      font-size: 0.82rem;
       font-weight: 600;
       color: var(--text);
       margin-bottom: 8px;
       text-transform: uppercase;
-      letter-spacing: 0.3px;
+      letter-spacing: 0.5px;
     }
 
-    .form-label .required {
-      color: var(--error);
-      margin-left: 2px;
-    }
+    .form-label .required { color: var(--error); margin-left: 2px; }
 
     .form-input,
     .form-select,
     .form-textarea {
       width: 100%;
-      padding: 14px 16px;
+      padding: 15px 18px;
       border: 1.5px solid var(--border);
-      border-radius: var(--radius-sm);
+      border-radius: var(--radius-xs);
       font-family: var(--font-body);
       font-size: 1rem;
       color: var(--text);
       background: var(--bg);
-      transition: border-color 0.2s, box-shadow 0.2s;
+      transition: all 0.2s;
       outline: none;
       -webkit-appearance: none;
       appearance: none;
-      line-height: 1.4;
+      line-height: 1.5;
     }
 
     .form-input:focus,
     .form-select:focus,
     .form-textarea:focus {
       border-color: var(--primary);
-      box-shadow: 0 0 0 3px rgba(0, 109, 50, 0.1);
+      box-shadow: 0 0 0 4px rgba(0,109,50,0.08);
       background: white;
     }
 
@@ -416,7 +304,7 @@
     .form-select.error,
     .form-textarea.error {
       border-color: var(--error);
-      box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.08);
+      box-shadow: 0 0 0 4px rgba(239,68,68,0.06);
     }
 
     .form-input.valid,
@@ -426,102 +314,76 @@
     }
 
     .form-select {
-      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%236B7280' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E");
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='18' height='18' viewBox='0 0 24 24' fill='none' stroke='%2364748b' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E");
       background-repeat: no-repeat;
-      background-position: right 12px center;
-      padding-right: 40px;
+      background-position: right 14px center;
+      padding-right: 44px;
+      cursor: pointer;
     }
 
-    .form-textarea {
-      resize: vertical;
-      min-height: 80px;
-    }
+    .form-textarea { resize: vertical; min-height: 90px; }
 
     .field-error {
       font-size: 0.8rem;
       color: var(--error);
-      margin-top: 4px;
+      margin-top: 6px;
       display: none;
     }
+    .field-error.show { display: block; }
 
-    .field-error.show {
-      display: block;
-    }
-
-    /* Submit Button */
+    /* ===== SUBMIT BUTTON ===== */
     .submit-btn {
       width: 100%;
       padding: 18px 28px;
       background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
       color: white;
       border: none;
-      border-radius: var(--radius-sm);
+      border-radius: var(--radius-xs);
       font-family: var(--font-body);
-      font-size: 1.1rem;
+      font-size: 1.05rem;
       font-weight: 700;
       cursor: pointer;
       display: flex;
       align-items: center;
       justify-content: center;
       gap: 12px;
-      transition: all 0.3s;
+      transition: all 0.25s;
       margin-top: 12px;
-      position: relative;
-      overflow: hidden;
+      letter-spacing: 0.3px;
     }
 
     .submit-btn:hover:not(:disabled) {
       transform: translateY(-2px);
-      box-shadow: 0 8px 24px rgba(0, 109, 50, 0.35);
+      box-shadow: 0 10px 30px rgba(0,109,50,0.3);
     }
 
-    .submit-btn:active:not(:disabled) {
-      transform: translateY(0);
-    }
-
-    .submit-btn:disabled {
-      opacity: 0.7;
-      cursor: not-allowed;
-    }
+    .submit-btn:active:not(:disabled) { transform: translateY(0); }
+    .submit-btn:disabled { opacity: 0.6; cursor: not-allowed; }
 
     .submit-btn .spinner {
-      width: 20px;
-      height: 20px;
-      border: 2.5px solid rgba(255, 255, 255, 0.3);
+      width: 20px; height: 20px;
+      border: 2.5px solid rgba(255,255,255,0.3);
       border-top-color: white;
       border-radius: 50%;
       animation: spin 0.7s linear infinite;
       display: none;
     }
+    .submit-btn.loading .spinner { display: block; }
+    .submit-btn.loading .btn-text { display: none; }
 
-    .submit-btn.loading .spinner {
-      display: block;
-    }
+    @keyframes spin { to { transform: rotate(360deg); } }
 
-    .submit-btn.loading .btn-text {
-      display: none;
-    }
-
-    @keyframes spin {
-      to {
-        transform: rotate(360deg);
-      }
-    }
-
-    /* Success Screen */
+    /* ===== SUCCESS SCREEN ===== */
     .success-screen {
       display: none;
       text-align: center;
-      padding: 40px 24px;
+      padding: 16px 0;
     }
-
-    .success-screen.show {
-      display: block;
-    }
+    .success-screen.show { display: block; }
 
     .success-icon-wrap {
-      width: 120px;
-      height: 120px;
+      width: 130px;
+      height: 130px;
       background: linear-gradient(135deg, #D1FAE5, #A7F3D0);
       border-radius: 50%;
       display: flex;
@@ -529,72 +391,57 @@
       justify-content: center;
       margin: 0 auto 28px;
       animation: popIn 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      box-shadow: 0 0 40px rgba(16,185,129,0.2);
     }
 
     @keyframes popIn {
-      0% {
-        transform: scale(0);
-        opacity: 0;
-      }
-
-      100% {
-        transform: scale(1);
-        opacity: 1;
-      }
+      0% { transform: scale(0); opacity: 0; }
+      100% { transform: scale(1); opacity: 1; }
     }
 
-    .success-icon-wrap svg {
-      width: 60px;
-      height: 60px;
-      color: var(--success);
-    }
+    .success-icon-wrap svg { width: 64px; height: 64px; color: var(--success); }
 
     .success-badge {
       display: inline-flex;
       align-items: center;
-      gap: 6px;
+      gap: 8px;
       background: var(--accent-light);
-      color: #B45309;
-      padding: 7px 18px;
-      border-radius: 20px;
+      color: #92400E;
+      padding: 8px 20px;
+      border-radius: 30px;
       font-size: 0.85rem;
       font-weight: 600;
-      margin-bottom: 18px;
+      margin-bottom: 20px;
     }
 
     .success-title {
       font-family: var(--font-heading);
-      font-size: 2.2rem;
+      font-size: 2.4rem;
       font-weight: 700;
       color: var(--primary);
       margin-bottom: 10px;
     }
 
     .success-name {
-      font-size: 1.25rem;
+      font-size: 1.3rem;
       font-weight: 600;
       color: var(--text);
-      margin-bottom: 18px;
+      margin-bottom: 20px;
     }
 
     .success-message {
       font-size: 1rem;
       color: var(--text-secondary);
       line-height: 1.7;
-      max-width: 400px;
-      margin: 0 auto 28px;
+      max-width: 420px;
+      margin: 0 auto 32px;
     }
 
-    .success-actions {
-      display: flex;
-      flex-direction: column;
-      gap: 14px;
-      align-items: center;
-    }
+    .success-actions { display: flex; flex-direction: column; gap: 14px; align-items: center; }
 
     .success-action-btn {
-      padding: 14px 28px;
-      border-radius: var(--radius-sm);
+      padding: 15px 28px;
+      border-radius: var(--radius-xs);
       font-family: var(--font-body);
       font-size: 1rem;
       font-weight: 600;
@@ -605,169 +452,99 @@
       transition: all 0.2s;
       border: none;
       width: 100%;
-      max-width: 320px;
+      max-width: 340px;
       justify-content: center;
     }
 
     .success-action-btn.primary {
       background: var(--primary);
       color: white;
+      box-shadow: 0 4px 16px rgba(0,109,50,0.25);
     }
-
-    .success-action-btn.primary:hover {
-      background: var(--primary-dark);
-    }
+    .success-action-btn.primary:hover { background: var(--primary-dark); }
 
     .success-action-btn.secondary {
       background: var(--bg);
       color: var(--text);
       border: 1.5px solid var(--border);
     }
+    .success-action-btn.secondary:hover { background: #f0f0f0; }
 
-    /* Form wrapper visibility */
-    #form-wrapper {
-      display: block;
-    }
+    /* ===== FORM WRAPPER ===== */
+    #form-wrapper { display: block; }
+    #form-wrapper.hide { display: none; }
 
-    #form-wrapper.hide {
-      display: none;
-    }
-
-    /* Footer */
+    /* ===== FOOTER ===== */
     .footer {
       text-align: center;
-      padding: 28px 24px;
-      font-size: 0.9rem;
+      padding: 32px 24px;
+      font-size: 0.85rem;
       color: var(--text-secondary);
       border-top: 1px solid var(--border);
       background: var(--card);
     }
+    .footer-brand { font-weight: 600; color: var(--primary); }
 
-    .footer-brand {
-      font-weight: 600;
-      color: var(--primary);
-    }
-
-    /* Toast Notification */
+    /* ===== TOAST ===== */
     .toast {
       position: fixed;
       top: 20px;
       left: 50%;
-      transform: translateX(-50%) translateY(-100px);
+      transform: translateX(-50%) translateY(-120px);
       background: var(--dark);
       color: white;
-      padding: 12px 20px;
-      border-radius: var(--radius-sm);
-      font-size: 0.9rem;
+      padding: 14px 24px;
+      border-radius: var(--radius-xs);
+      font-size: 0.92rem;
       font-weight: 500;
-      z-index: 1000;
-      transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      z-index: 9999;
+      transition: transform 0.35s cubic-bezier(0.175, 0.885, 0.32, 1.275);
       box-shadow: var(--shadow-lg);
       max-width: calc(100% - 40px);
       text-align: center;
     }
+    .toast.show { transform: translateX(-50%) translateY(0); }
+    .toast.error { background: var(--error); }
 
-    .toast.show {
-      transform: translateX(-50%) translateY(0);
-    }
-
-    .toast.error {
-      background: var(--error);
-    }
-
-    /* Scrollbar */
-    ::-webkit-scrollbar {
-      width: 4px;
-    }
-
-    ::-webkit-scrollbar-track {
-      background: transparent;
-    }
-
-    ::-webkit-scrollbar-thumb {
-      background: var(--primary);
-      border-radius: 4px;
-    }
-
-    /* Responsive */
+    /* ===== RESPONSIVE ===== */
     @media (min-width: 480px) {
-      .header-inner {
-        padding: 48px 32px 44px;
-      }
-
-      .header-logo-wrap {
-        width: 120px;
-        height: 120px;
-      }
-
-      .main {
-        padding: 36px 0 64px;
-      }
-
-      .form-card {
-        padding: 36px 32px;
-      }
-
-      .stats-bar {
-        gap: 56px;
-        padding: 18px 32px;
-      }
-
-      .form-card-header h2 {
-        font-size: 2rem;
-      }
-
-      .success-title {
-        font-size: 2.6rem;
-      }
-
-      .success-message {
-        max-width: 480px;
-      }
-
-      .already-title {
-        font-size: 2.4rem;
-      }
-
-      .already-message {
-        max-width: 480px;
-      }
+      .header-inner { padding: 60px 32px 56px; }
+      .header-logo-wrap { width: 130px; height: 130px; }
+      .main { padding: 36px 0 80px; }
+      .form-card { padding: 40px 36px; }
+      .form-card-header h2 { font-size: 2.1rem; }
+      .success-title { font-size: 2.8rem; }
+      .success-message { max-width: 480px; }
     }
   </style>
 </head>
-
 <body>
 
   <!-- Toast -->
   <div class="toast" id="toast"></div>
 
   <!-- Header -->
-  <header class="header pattern-bg">
+  <header class="header">
+    <div class="header-glow"></div>
+    <div class="header-glow-2"></div>
     <div class="header-inner">
       <div class="header-logo-wrap">
         <img src="logo-uin.png" alt="Logo UIN Raden Fatah" class="header-logo-img">
       </div>
-      <div class="header-tag">2026</div>
+      <div class="header-badge">
+        <span class="header-badge-dot"></span>
+        Tahun 2026
+      </div>
       <h1>Simposium Alumni UIN Raden Fatah Palembang</h1>
       <p class="header-tagline">"Berkarya dan Bersinergi untuk Indonesia Berdaya"</p>
       <div class="header-divider"></div>
       <div class="header-meta">
         <div class="header-meta-item">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-            stroke-linecap="round" stroke-linejoin="round">
-            <rect width="18" height="18" x="3" y="4" rx="2" ry="2" />
-            <line x1="16" x2="16" y1="2" y2="6" />
-            <line x1="8" x2="8" y1="2" y2="6" />
-            <line x1="3" x2="21" y1="10" y2="10" />
-          </svg>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="18" x="3" y="4" rx="2" ry="2"/><line x1="16" x2="16" y1="2" y2="6"/><line x1="8" x2="8" y1="2" y2="6"/><line x1="3" x2="21" y1="10" y2="10"/></svg>
           2026
         </div>
         <div class="header-meta-item">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-            stroke-linecap="round" stroke-linejoin="round">
-            <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z" />
-            <circle cx="12" cy="10" r="3" />
-          </svg>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
           UIN Raden Fatah Palembang
         </div>
       </div>
@@ -778,7 +555,7 @@
   <div class="stats-bar">
     <div class="stat-item">
       <div class="stat-value" id="stat-registered">0</div>
-      <div class="stat-label">Terdaftar</div>
+      <div class="stat-label">Peserta Terdaftar</div>
     </div>
   </div>
 
@@ -792,6 +569,9 @@
         <!-- Registration Form -->
         <div class="form-card" id="form-card">
           <div class="form-card-header">
+            <div class="form-card-header-icon">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+            </div>
             <h2>Formulir Pendaftaran</h2>
             <p>Isi data di bawah untuk melakukan absensi</p>
           </div>
@@ -801,24 +581,21 @@
             <!-- Nama -->
             <div class="form-group">
               <label class="form-label" for="nama">Nama Lengkap<span class="required">*</span></label>
-              <input type="text" id="nama" name="nama" class="form-input" placeholder="Masukkan nama lengkap"
-                autocomplete="name" maxlength="100">
+              <input type="text" id="nama" name="nama" class="form-input" placeholder="Masukkan nama lengkap Anda" autocomplete="name" maxlength="100">
               <div class="field-error" id="err-nama"></div>
             </div>
 
             <!-- No HP -->
             <div class="form-group">
               <label class="form-label" for="nohp">No HP / WhatsApp<span class="required">*</span></label>
-              <input type="tel" id="nohp" name="nohp" class="form-input" placeholder="08xxxxxxxxxx" autocomplete="tel"
-                maxlength="15">
+              <input type="tel" id="nohp" name="nohp" class="form-input" placeholder="08xxxxxxxxxx" autocomplete="tel" maxlength="15">
               <div class="field-error" id="err-nohp"></div>
             </div>
 
             <!-- Email -->
             <div class="form-group">
               <label class="form-label" for="email">Email<span class="required">*</span></label>
-              <input type="email" id="email" name="email" class="form-input" placeholder="nama@email.com"
-                autocomplete="email">
+              <input type="email" id="email" name="email" class="form-input" placeholder="nama@email.com" autocomplete="email">
               <div class="field-error" id="err-email"></div>
             </div>
 
@@ -861,16 +638,14 @@
             <!-- Alamat -->
             <div class="form-group">
               <label class="form-label" for="alamat">Alamat<span class="required">*</span></label>
-              <textarea id="alamat" name="alamat" class="form-textarea" placeholder="Masukkan alamat lengkap"
-                maxlength="200"></textarea>
+              <textarea id="alamat" name="alamat" class="form-textarea" placeholder="Masukkan alamat lengkap" maxlength="200"></textarea>
               <div class="field-error" id="err-alamat"></div>
             </div>
 
             <!-- Pekerjaan/Instansi -->
             <div class="form-group">
               <label class="form-label" for="pekerjaan">Pekerjaan / Instansi<span class="required">*</span></label>
-              <input type="text" id="pekerjaan" name="pekerjaan" class="form-input"
-                placeholder="Contoh: Guru di SMAN 1 Palembang" maxlength="100">
+              <input type="text" id="pekerjaan" name="pekerjaan" class="form-input" placeholder="Contoh: Guru di SMAN 1 Palembang" maxlength="100">
               <div class="field-error" id="err-pekerjaan"></div>
             </div>
 
@@ -878,58 +653,35 @@
             <button type="submit" class="submit-btn" id="submit-btn">
               <span class="spinner"></span>
               <span class="btn-text">
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                  stroke-linecap="round" stroke-linejoin="round">
-                  <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14" />
-                  <polyline points="22 4 12 14.01 9 11.01" />
-                </svg>
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
                 Daftar Sekarang
               </span>
             </button>
           </form>
         </div>
-
-      </div><!-- end #form-wrapper -->
+      </div>
 
       <!-- Success Screen -->
       <div class="success-screen" id="success-screen">
         <div class="success-icon-wrap">
-          <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-            stroke-linecap="round" stroke-linejoin="round">
-            <polyline points="20 6 9 17 4 12" />
-          </svg>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
         </div>
         <div class="success-badge">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
-            stroke-linecap="round" stroke-linejoin="round">
-            <polyline points="20 6 9 17 4 12" />
-          </svg>
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
           Berhasil Terdaftar
         </div>
         <h2 class="success-title">Alhamdulillah!</h2>
         <p class="success-name" id="success-name"></p>
         <p class="success-message">
-          Anda telah berhasil terdaftar sebagai peserta Simposium Alumni UIN Raden Fatah Palembang. Silakan tunjukkan
-          halaman ini kepada petugas saat registrasi ulang.
+          Anda telah berhasil terdaftar sebagai peserta Simposium Alumni UIN Raden Fatah Palembang. Silakan tunjukkan halaman ini kepada petugas saat registrasi ulang.
         </p>
         <div class="success-actions">
           <button class="success-action-btn primary" onclick="window.print()">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-              stroke-linecap="round" stroke-linejoin="round">
-              <polyline points="6 9 6 2 18 2 18 9" />
-              <path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2" />
-              <rect width="12" height="8" x="6" y="14" />
-            </svg>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 6 2 18 2 18 9"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect width="12" height="8" x="6" y="14"/></svg>
             Cetak Bukti Pendaftaran
           </button>
           <button class="success-action-btn secondary" onclick="showFormAgain()">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-              stroke-linecap="round" stroke-linejoin="round">
-              <path d="M3 12a9 9 0 0 1 9-9 9.75 9.75 0 0 1 6.74 2.74L21 8" />
-              <path d="M21 3v5h-5" />
-              <path d="M21 12a9 9 0 0 1-9 9 9.75 9.75 0 0 1-6.74-2.74L3 16" />
-              <path d="M8 16H3v5" />
-            </svg>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12a9 9 0 0 1 9-9 9.75 9.75 0 0 1 6.74 2.74L21 8"/><path d="M21 3v5h-5"/><path d="M21 12a9 9 0 0 1-9 9 9.75 9.75 0 0 1-6.74-2.74L3 16"/><path d="M8 16H3v5"/></svg>
             Daftar dengan Data Lain
           </button>
         </div>
@@ -950,12 +702,6 @@
   <script src="CONFIG.js"></script>
 
   <script>
-    // ========================
-    // CONFIGURATION
-    // ========================
-    // IMPORTANT: Replace this URL with your deployed Google Apps Script Web App URL
-    // Use API_URL from CONFIG.js (falls back to placeholder if not set)
-
     // ========================
     // DATA
     // ========================
@@ -1037,16 +783,7 @@
 
     const TAHUN_OPTIONS = [];
     const currentYear = new Date().getFullYear();
-    const startYear = 1970;
-    for (let y = currentYear; y >= startYear; y--) {
-      TAHUN_OPTIONS.push(y);
-    }
-
-    // ========================
-    // STATE
-    // ========================
-    let html5QrCode = null;
-    let scannerRunning = false;
+    for (let y = currentYear; y >= 1970; y--) TAHUN_OPTIONS.push(y);
 
     // ========================
     // INIT
@@ -1069,28 +806,26 @@
     }
 
     function populateJurusan() {
-      const fakultasSelect = document.getElementById('fakultas');
-      const jurusanSelect = document.getElementById('jurusan');
+      const fakSelect = document.getElementById('fakultas');
+      const jurSelect = document.getElementById('jurusan');
 
-      fakultasSelect.addEventListener('change', () => {
-        const fak = fakultasSelect.value;
-        clearField(jurusanSelect, 'err-jurusan');
-
+      fakSelect.addEventListener('change', () => {
+        const fak = fakSelect.value;
+        clearField(jurSelect, 'err-jurusan');
         if (!fak) {
-          jurusanSelect.disabled = true;
-          jurusanSelect.innerHTML = '<option value="">Pilih fakultas terlebih dahulu</option>';
+          jurSelect.disabled = true;
+          jurSelect.innerHTML = '<option value="">Pilih fakultas terlebih dahulu</option>';
           return;
         }
-
-        const jurusans = FAKULTAS_JURUSAN[fak] || [];
-        jurusanSelect.innerHTML = '<option value="">Pilih Jurusan / Prodi</option>';
-        jurusans.forEach(j => {
+        const list = FAKULTAS_JURUSAN[fak] || [];
+        jurSelect.innerHTML = '<option value="">Pilih Jurusan / Prodi</option>';
+        list.forEach(j => {
           const opt = document.createElement('option');
           opt.value = j;
           opt.textContent = j;
-          jurusanSelect.appendChild(opt);
+          jurSelect.appendChild(opt);
         });
-        jurusanSelect.disabled = false;
+        jurSelect.disabled = false;
       });
     }
 
@@ -1112,15 +847,10 @@
     // ========================
     function setupFormValidation() {
       const form = document.getElementById('reg-form');
-
-      // Real-time validation on blur
       form.querySelectorAll('input, select, textarea').forEach(el => {
         el.addEventListener('blur', () => validateField(el));
-        el.addEventListener('input', () => {
-          if (el.classList.contains('error')) validateField(el);
-        });
+        el.addEventListener('input', () => { if (el.classList.contains('error')) validateField(el); });
       });
-
       form.addEventListener('submit', handleSubmit);
     }
 
@@ -1128,7 +858,6 @@
       const name = el.name || el.id;
       const val = el.value.trim();
       const errEl = document.getElementById('err-' + name);
-
       let error = '';
 
       switch (name) {
@@ -1139,7 +868,7 @@
           break;
         case 'nohp':
           if (!val) error = 'Nomor HP harus diisi';
-          else if (!/^(?:\+?62|0)[2-9][0-9]{7,11}$/.test(val.replace(/\s/g, ''))) error = 'Format nomor HP tidak valid (contoh: 0812...)';
+          else if (!/^(?:\+?62|0)[2-9][0-9]{7,11}$/.test(val.replace(/\s/g, ''))) error = 'Format nomor HP tidak valid';
           break;
         case 'email':
           if (!val) error = 'Email harus diisi';
@@ -1168,10 +897,7 @@
       if (error) {
         el.classList.add('error');
         el.classList.remove('valid');
-        if (errEl) {
-          errEl.textContent = error;
-          errEl.classList.add('show');
-        }
+        if (errEl) { errEl.textContent = error; errEl.classList.add('show'); }
         return false;
       } else {
         el.classList.remove('error');
@@ -1188,9 +914,8 @@
     }
 
     function validateAll() {
-      const form = document.getElementById('reg-form');
       let valid = true;
-      form.querySelectorAll('input, select, textarea').forEach(el => {
+      document.getElementById('reg-form').querySelectorAll('input, select, textarea').forEach(el => {
         if (!validateField(el)) valid = false;
       });
       return valid;
@@ -1225,44 +950,27 @@
         pekerjaan: document.getElementById('pekerjaan').value.trim()
       };
 
-      // Build URL with form data as query params (GET request - better CORS support)
-      const params = new URLSearchParams({
-        action: 'register',
-        nama: formData.nama,
-        nohp: formData.nohp,
-        email: formData.email,
-        tahun_masuk: formData.tahun_masuk,
-        fakultas: formData.fakultas,
-        jurusan: formData.jurusan,
-        alamat: formData.alamat,
-        pekerjaan: formData.pekerjaan
-      });
-
-      // AbortController untuk timeout
+      const params = new URLSearchParams(formData);
       const controller = new AbortController();
-      const timeoutId = setTimeout(() => controller.abort(), 20000); // 20 detik timeout
+      const timeoutId = setTimeout(() => controller.abort(), 20000);
 
       try {
-          const res = await fetch(`${CONFIG.API_URL}?${params.toString()}`, {
-            method: 'GET',
-            headers: { 'Accept': 'application/json' },
-            signal: controller.signal
-          });
+        const res = await fetch(`${CONFIG.API_URL}?${params.toString()}`, {
+          method: 'GET',
+          headers: { 'Accept': 'application/json' },
+          signal: controller.signal
+        });
 
-          clearTimeout(timeoutId);
-          const json = await res.json();
+        clearTimeout(timeoutId);
+        const json = await res.json();
 
-          if (json.status === 'success') {
-            onRegistrationSuccess(formData.nama);
-          } else if (json.code === 'DUPLICATE_NOHp') {
-            btn.classList.remove('loading');
-            btn.disabled = false;
-            showToast(json.message || 'Nomor HP sudah terdaftar!', 'error');
-          } else {
-            btn.classList.remove('loading');
-            btn.disabled = false;
-            showToast(json.message || 'Terjadi kesalahan. Silakan coba lagi.', 'error');
-          }
+        if (json.status === 'success') {
+          onRegistrationSuccess(formData.nama);
+        } else {
+          btn.classList.remove('loading');
+          btn.disabled = false;
+          showToast(json.message || 'Terjadi kesalahan. Silakan coba lagi.', 'error');
+        }
       } catch (err) {
         clearTimeout(timeoutId);
         if (err.name === 'AbortError') {
@@ -1276,93 +984,22 @@
       }
     }
 
-
     function onRegistrationSuccess(nama) {
-      // Show success screen
       document.getElementById('form-wrapper').classList.add('hide');
       document.getElementById('success-screen').classList.add('show');
       document.getElementById('success-name').textContent = nama;
-
-      // Update stats
       const statEl = document.getElementById('stat-registered');
       const current = parseInt(statEl.textContent) || 0;
       statEl.textContent = current + 1;
-
-      // Scroll to top
       window.scrollTo({ top: 0, behavior: 'smooth' });
     }
 
     function showFormAgain() {
-      // Hide success, show form, reset form fields
       document.getElementById('success-screen').classList.remove('show');
       document.getElementById('form-wrapper').classList.remove('hide');
       document.getElementById('reg-form').reset();
-      // Scroll to form
-      document.getElementById('form-card').scrollIntoView({ behavior: 'smooth' });
-    }
-
-    // ========================
-    // QR SCANNER
-    // ========================
-    async function startScanner() {
-      const statusEl = document.getElementById('scanner-status');
-
-      try {
-        // Request camera permission
-        const stream = await navigator.mediaDevices.getUserMedia({ video: { facingMode: 'environment' } });
-        stream.getTracks().forEach(t => t.stop()); // Stop immediately, we just needed permission
-
-        // Now init html5-qrcode
-        html5QrCode = new Html5Qrcode('qr-reader');
-        document.getElementById('qr-reader').style.display = 'block';
-        document.getElementById('scan-btn').style.display = 'none';
-        document.getElementById('manual-btn').style.display = 'none';
-        statusEl.textContent = 'Kamera aktif — arahkan ke QR code...';
-
-        await html5QrCode.start(
-          { facingMode: 'environment' },
-          {
-            fps: 10,
-            qrbox: { width: 250, height: 250 },
-            aspectRatio: 1
-          },
-          onScanSuccess,
-          () => { } // ignore scan failures
-        );
-
-        scannerRunning = true;
-      } catch (err) {
-        statusEl.textContent = 'Tidak dapat mengakses kamera. Gunakan tombol "Isi Form Manual".';
-        document.getElementById('scan-btn').textContent = 'Izinkan Kamera';
-      }
-    }
-
-    function onScanSuccess(decodedText) {
-      // Vibrate if available
-      if (navigator.vibrate) navigator.vibrate(100);
-
-      // Try to open the URL
-      try {
-        const url = new URL(decodedText);
-        window.location.href = decodedText;
-      } catch (e) {
-        // Not a URL, show as toast
-        showToast('QR Code terdeteksi: ' + decodedText);
-      }
-    }
-
-    function showForm() {
-      if (scannerRunning && html5QrCode) {
-        html5QrCode.stop().then(() => {
-          scannerRunning = false;
-          document.getElementById('qr-reader').style.display = 'none';
-          document.getElementById('scan-btn').style.display = 'flex';
-          document.getElementById('manual-btn').style.display = 'flex';
-          document.getElementById('scanner-status').textContent = '';
-        });
-      }
-
-      // Scroll to form
+      document.getElementById('jurusan').innerHTML = '<option value="">Pilih fakultas terlebih dahulu</option>';
+      document.getElementById('jurusan').disabled = true;
       document.getElementById('form-card').scrollIntoView({ behavior: 'smooth' });
     }
 
@@ -1374,10 +1011,8 @@
       toast.textContent = msg;
       toast.className = 'toast' + (type === 'error' ? ' error' : '');
       toast.classList.add('show');
-      setTimeout(() => toast.classList.remove('show'), 3000);
+      setTimeout(() => toast.classList.remove('show'), 3500);
     }
-
   </script>
 </body>
-
 </html>
