@@ -58,150 +58,244 @@
       -webkit-font-smoothing: antialiased;
     }
 
-    /* ===== HEADER ===== */
-    .header {
+    /* ===== HERO (Full Screen Landing) ===== */
+    .hero {
+      position: relative;
+      min-height: 100vh;
+      min-height: 100dvh;
       background: linear-gradient(160deg, #006D32 0%, #004d25 50%, #003318 100%);
       color: white;
-      position: relative;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
       overflow: hidden;
+      transition: min-height 0.6s cubic-bezier(0.4, 0, 0.2, 1),
+                  padding 0.6s cubic-bezier(0.4, 0, 0.2, 1);
     }
 
-    /* Gold accent bar top */
-    .header::before {
+    /* Gold accent bar */
+    .hero::before {
       content: '';
       position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      height: 3px;
+      top: 0; left: 0; right: 0;
+      height: 4px;
       background: linear-gradient(90deg, var(--accent), #FFD54F 50%, var(--accent));
     }
 
-    /* Subtle pattern overlay */
-    .header::after {
+    /* Pattern overlay */
+    .hero::after {
       content: '';
       position: absolute;
       inset: 0;
-      opacity: 0.03;
+      opacity: 0.04;
       background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23ffffff'%3E%3Cpath d='M30 0L60 30L30 60L0 30z'/%3E%3C/g%3E%3C/svg%3E");
       pointer-events: none;
     }
 
-    .header-glow {
+    .hero-glow {
       position: absolute;
-      top: -80px;
-      right: -80px;
-      width: 350px;
-      height: 350px;
-      background: radial-gradient(circle, rgba(255, 179, 0, 0.18) 0%, transparent 65%);
+      top: -120px; right: -120px;
+      width: 500px; height: 500px;
+      background: radial-gradient(circle, rgba(255,179,0,0.2) 0%, transparent 65%);
       pointer-events: none;
     }
 
-    .header-glow-2 {
+    .hero-glow-2 {
       position: absolute;
-      bottom: -40px;
-      left: -40px;
-      width: 250px;
-      height: 250px;
-      background: radial-gradient(circle, rgba(255, 255, 255, 0.06) 0%, transparent 65%);
+      bottom: -80px; left: -80px;
+      width: 350px; height: 350px;
+      background: radial-gradient(circle, rgba(255,255,255,0.06) 0%, transparent 65%);
       pointer-events: none;
     }
 
-    .header-inner {
+    /* Centered content */
+    .hero-content {
       position: relative;
       z-index: 1;
-      padding: 52px 24px 48px;
       text-align: center;
+      padding: 40px 28px;
+      width: 100%;
+      max-width: 480px;
+      animation: heroFadeIn 1s ease-out;
     }
 
-    .header-logo-wrap {
-      width: 110px;
-      height: 110px;
-      margin: 0 auto 24px;
+    @keyframes heroFadeIn {
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
     }
 
-    .header-logo-img {
+    @keyframes heroFadeOut {
+      from { opacity: 1; transform: translateY(0); }
+      to { opacity: 0; transform: translateY(-20px); }
+    }
+
+    .hero-logo-wrap {
+      width: 130px;
+      height: 130px;
+      margin: 0 auto 28px;
+      animation: logoFloat 3s ease-in-out infinite;
+    }
+
+    @keyframes logoFloat {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-8px); }
+    }
+
+    .hero-logo-img {
       width: 100%;
       height: 100%;
       object-fit: contain;
-      filter: drop-shadow(0 8px 20px rgba(0, 0, 0, 0.25));
+      filter: drop-shadow(0 12px 30px rgba(0,0,0,0.3));
     }
 
-    .header-badge {
+    .hero-badge {
       display: inline-flex;
       align-items: center;
-      gap: 8px;
-      background: rgba(255, 255, 255, 0.1);
-      border: 1px solid rgba(255, 255, 255, 0.18);
-      padding: 6px 20px;
+      gap: 10px;
+      background: rgba(255,255,255,0.12);
+      border: 1px solid rgba(255,255,255,0.2);
+      padding: 8px 24px;
       border-radius: 30px;
-      font-size: 0.8rem;
+      font-size: 0.82rem;
       font-weight: 600;
-      letter-spacing: 1.5px;
-      margin-bottom: 18px;
+      letter-spacing: 2px;
+      margin-bottom: 24px;
       text-transform: uppercase;
-      backdrop-filter: blur(10px);
+      backdrop-filter: blur(12px);
     }
 
-    .header-badge-dot {
-      width: 7px;
-      height: 7px;
+    .hero-badge-dot {
+      width: 8px; height: 8px;
       background: var(--accent);
       border-radius: 50%;
       animation: blink 2s ease-in-out infinite;
     }
 
     @keyframes blink {
-
-      0%,
-      100% {
-        opacity: 1;
-      }
-
-      50% {
-        opacity: 0.4;
-      }
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.3; }
     }
 
-    .header h1 {
+    .hero h1 {
       font-family: var(--font-heading);
-      font-size: clamp(1.9rem, 7vw, 2.8rem);
+      font-size: clamp(2rem, 8vw, 3rem);
       font-weight: 700;
       line-height: 1.15;
-      margin-bottom: 12px;
+      margin-bottom: 14px;
       letter-spacing: 0.5px;
     }
 
-    .header-tagline {
-      font-size: 1.05rem;
+    .hero-tagline {
+      font-size: 1.1rem;
       font-weight: 500;
-      color: rgba(255, 255, 255, 0.85);
-      margin-bottom: 28px;
+      color: rgba(255,255,255,0.85);
+      margin-bottom: 40px;
       letter-spacing: 0.3px;
+      line-height: 1.5;
     }
 
-    .header-divider {
+    .hero-divider {
       width: 64px;
       height: 3px;
       background: linear-gradient(90deg, transparent, var(--accent), transparent);
-      margin: 0 auto 22px;
+      margin: 0 auto 20px;
       border-radius: 2px;
     }
 
-    .header-meta {
+    .hero-meta {
       display: flex;
-      justify-content: center;
-      gap: 28px;
-      flex-wrap: wrap;
+      flex-direction: column;
+      gap: 10px;
+      align-items: center;
     }
 
-    .header-meta-item {
+    .hero-meta-item {
       display: flex;
       align-items: center;
-      gap: 8px;
-      font-size: 0.88rem;
+      gap: 10px;
+      font-size: 0.9rem;
       font-weight: 500;
-      color: rgba(255, 255, 255, 0.85);
+      color: rgba(255,255,255,0.8);
+    }
+
+    /* Scroll indicator */
+    .scroll-indicator {
+      position: absolute;
+      bottom: 32px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+      cursor: pointer;
+      z-index: 2;
+      animation: bounce 2s ease-in-out infinite;
+      transition: opacity 0.4s;
+    }
+
+    .scroll-indicator.hidden { opacity: 0; pointer-events: none; }
+
+    @keyframes bounce {
+      0%, 100% { transform: translateX(-50%) translateY(0); }
+      50% { transform: translateX(-50%) translateY(6px); }
+    }
+
+    .scroll-indicator span {
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.6);
+    }
+
+    .scroll-arrow {
+      width: 24px;
+      height: 24px;
+      border-right: 2px solid rgba(255,255,255,0.5);
+      border-bottom: 2px solid rgba(255,255,255,0.5);
+      transform: rotate(45deg);
+    }
+
+    /* Mini header (after scroll) */
+    .mini-header {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      background: linear-gradient(160deg, #006D32 0%, #004d25 100%);
+      color: white;
+      padding: 12px 20px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      z-index: 100;
+      transform: translateY(-100%);
+      transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+      box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+    }
+
+    .mini-header.visible { transform: translateY(0); }
+
+    .mini-header::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, var(--accent), #FFD54F 50%, var(--accent));
+    }
+
+    .mini-logo {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      object-fit: contain;
+    }
+
+    .mini-title {
+      font-family: var(--font-heading);
+      font-size: 1.05rem;
+      font-weight: 700;
+      line-height: 1.2;
     }
 
     /* ===== CONTAINER ===== */
@@ -244,7 +338,7 @@
 
     /* ===== MAIN ===== */
     .main {
-      padding: 28px 0 64px;
+      padding: 80px 0 64px;
     }
 
     /* ===== FORM CARD ===== */
@@ -605,17 +699,21 @@
 
     /* ===== RESPONSIVE ===== */
     @media (min-width: 480px) {
-      .header-inner {
-        padding: 60px 32px 56px;
+      .hero-logo-wrap {
+        width: 150px;
+        height: 150px;
       }
 
-      .header-logo-wrap {
-        width: 130px;
-        height: 130px;
+      .hero h1 {
+        font-size: clamp(2.4rem, 7vw, 3.2rem);
+      }
+
+      .hero-content {
+        padding: 60px 40px;
       }
 
       .main {
-        padding: 36px 0 80px;
+        padding: 80px 0 80px;
       }
 
       .form-card {
@@ -642,43 +740,46 @@
   <!-- Toast -->
   <div class="toast" id="toast"></div>
 
-  <!-- Header -->
-  <header class="header">
-    <div class="header-glow"></div>
-    <div class="header-glow-2"></div>
-    <div class="header-inner">
-      <div class="header-logo-wrap">
-        <img src="logo-uin.png" alt="Logo UIN Raden Fatah" class="header-logo-img">
+  <!-- Mini Header (fixed, shown after scroll) -->
+  <div class="mini-header" id="miniHeader">
+    <img src="logo-uin.png" alt="Logo" class="mini-logo">
+    <div>
+      <div class="mini-title">Simposium Alumni UIN RF</div>
+      <div class="mini-subtitle">Formulir Pendaftaran</div>
+    </div>
+  </div>
+
+  <!-- Hero (Full Screen Landing) -->
+  <section class="hero" id="hero">
+    <div class="hero-glow"></div>
+    <div class="hero-glow-2"></div>
+    <div class="hero-content">
+      <div class="hero-logo-wrap">
+        <img src="logo-uin.png" alt="Logo UIN Raden Fatah" class="hero-logo-img">
       </div>
-      <div class="header-badge">
-        <span class="header-badge-dot"></span>
+      <div class="hero-badge">
+        <span class="hero-badge-dot"></span>
         Tahun 2026
       </div>
       <h1>Simposium Alumni UIN Raden Fatah Palembang</h1>
-      <p class="header-tagline">"Berkarya dan Bersinergi untuk Indonesia Berdaya"</p>
-      <div class="header-divider"></div>
-      <div class="header-meta">
-        <div class="header-meta-item">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-            stroke-linecap="round" stroke-linejoin="round">
-            <rect width="18" height="18" x="3" y="4" rx="2" ry="2" />
-            <line x1="16" x2="16" y1="2" y2="6" />
-            <line x1="8" x2="8" y1="2" y2="6" />
-            <line x1="3" x2="21" y1="10" y2="10" />
-          </svg>
+      <p class="hero-tagline">"Berkarya dan Bersinergi untuk Indonesia Berdaya"</p>
+      <div class="hero-divider"></div>
+      <div class="hero-meta">
+        <div class="hero-meta-item">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="18" x="3" y="4" rx="2" ry="2"/><line x1="16" x2="16" y1="2" y2="6"/><line x1="8" x2="8" y1="2" y2="6"/><line x1="3" x2="21" y1="10" y2="10"/></svg>
           2026
         </div>
-        <div class="header-meta-item">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-            stroke-linecap="round" stroke-linejoin="round">
-            <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z" />
-            <circle cx="12" cy="10" r="3" />
-          </svg>
+        <div class="hero-meta-item">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
           UIN Raden Fatah Palembang
         </div>
       </div>
     </div>
-  </header>
+    <div class="scroll-indicator" id="scrollIndicator" onclick="scrollToForm()">
+      <span>Isi Formulir</span>
+      <div class="scroll-arrow"></div>
+    </div>
+  </section>
 
   <!-- Stats Bar -->
   <div class="stats-bar">
@@ -1240,6 +1341,31 @@
       toast.classList.add('show');
       setTimeout(() => toast.classList.remove('show'), 3500);
     }
+
+    // ========================
+    // SCROLL DETECTION
+    // ========================
+    let scrolled = false;
+
+    function scrollToForm() {
+      document.getElementById('form-wrapper').scrollIntoView({ behavior: 'smooth' });
+    }
+
+    window.addEventListener('scroll', () => {
+      const scrollY = window.scrollY || window.pageYOffset;
+      const miniHeader = document.getElementById('miniHeader');
+      const scrollIndicator = document.getElementById('scrollIndicator');
+
+      if (scrollY > 100 && !scrolled) {
+        scrolled = true;
+        miniHeader.classList.add('visible');
+        scrollIndicator.classList.add('hidden');
+      } else if (scrollY <= 100 && scrolled) {
+        scrolled = false;
+        miniHeader.classList.remove('visible');
+        scrollIndicator.classList.remove('hidden');
+      }
+    });
   </script>
 </body>
 
