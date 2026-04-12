@@ -1112,9 +1112,14 @@
         if (jurSelect.value === MANUAL_KEY) {
           manualWrap.style.display = 'block';
           manualInput.focus();
+          // Clear error on select, but manual input validation handles it
+          clearField(jurSelect, 'err-jurusan');
         } else {
           manualWrap.style.display = 'none';
           manualInput.value = '';
+          // Clear error on both select and manual input
+          clearField(jurSelect, 'err-jurusan');
+          clearField(manualInput, 'err-jurusan');
         }
       });
     }
@@ -1139,7 +1144,11 @@
       const form = document.getElementById('reg-form');
       form.querySelectorAll('input, select, textarea').forEach(el => {
         el.addEventListener('blur', () => validateField(el));
-        el.addEventListener('input', () => { if (el.classList.contains('error')) validateField(el); });
+        el.addEventListener('input', () => {
+          if (el.classList.contains('error') || el.id === 'jurusan_manual') {
+            validateField(el);
+          }
+        });
       });
       form.addEventListener('submit', handleSubmit);
     }
@@ -1176,6 +1185,12 @@
           } else if (val === MANUAL_KEY) {
             const manual = document.getElementById('jurusan_manual').value.trim();
             if (!manual || manual.length < 3) error = 'Ketik nama jurusan/prodi minimal 3 karakter';
+          }
+          break;
+        case 'jurusan_manual':
+          const jurSelect = document.getElementById('jurusan');
+          if (jurSelect.value === MANUAL_KEY && (!val || val.length < 3)) {
+            error = 'Ketik nama jurusan/prodi minimal 3 karakter';
           }
           break;
         case 'alamat':
