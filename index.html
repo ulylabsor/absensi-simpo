@@ -298,6 +298,176 @@
       line-height: 1.2;
     }
 
+    /* ===== SUCCESS NOTIFICATION (Header Style) ===== */
+    .success-notif {
+      position: fixed;
+      top: 16px;
+      left: 50%;
+      transform: translateX(-50%) translateY(-200%);
+      background: linear-gradient(135deg, #ffffff 0%, #f0fdf4 100%);
+      border: 1.5px solid rgba(16, 185, 129, 0.2);
+      border-radius: 20px;
+      padding: 20px 24px;
+      width: calc(100% - 40px);
+      max-width: 480px;
+      z-index: 200;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15), 0 0 0 1px rgba(16, 185, 129, 0.1);
+      transition: transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      text-align: center;
+      overflow: hidden;
+    }
+
+    .success-notif.show {
+      transform: translateX(-50%) translateY(0);
+    }
+
+    .success-notif::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 4px;
+      background: linear-gradient(90deg, #10B981, #34D399, #10B981);
+      background-size: 200% 100%;
+      animation: shimmer 2s linear infinite;
+    }
+
+    @keyframes shimmer {
+      0% { background-position: 200% 0; }
+      100% { background-position: -200% 0; }
+    }
+
+    .success-notif-glow {
+      position: absolute;
+      top: -30px; right: -30px;
+      width: 120px; height: 120px;
+      background: radial-gradient(circle, rgba(16, 185, 129, 0.15) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .success-notif-icon {
+      width: 56px;
+      height: 56px;
+      background: linear-gradient(135deg, #D1FAE5, #A7F3D0);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 14px;
+      animation: successPop 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275) 0.1s both;
+      box-shadow: 0 8px 24px rgba(16, 185, 129, 0.2);
+    }
+
+    @keyframes successPop {
+      0% { transform: scale(0) rotate(-10deg); opacity: 0; }
+      60% { transform: scale(1.15) rotate(3deg); }
+      100% { transform: scale(1) rotate(0); opacity: 1; }
+    }
+
+    .success-notif-icon svg {
+      width: 28px;
+      height: 28px;
+      color: #10B981;
+    }
+
+    .success-notif-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: linear-gradient(135deg, #ECFDF5, #D1FAE5);
+      color: #065F46;
+      padding: 6px 16px;
+      border-radius: 30px;
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      margin-bottom: 10px;
+      border: 1px solid rgba(16, 185, 129, 0.2);
+    }
+
+    .success-notif-badge svg {
+      width: 12px;
+      height: 12px;
+    }
+
+    .success-notif-title {
+      font-family: var(--font-heading);
+      font-size: 1.6rem;
+      font-weight: 700;
+      color: var(--primary);
+      margin-bottom: 6px;
+      animation: fadeSlideUp 0.5s ease-out 0.2s both;
+    }
+
+    .success-notif-name {
+      font-size: 1.05rem;
+      font-weight: 600;
+      color: #374151;
+      margin-bottom: 8px;
+      animation: fadeSlideUp 0.5s ease-out 0.3s both;
+    }
+
+    .success-notif-msg {
+      font-size: 0.82rem;
+      color: #6B7280;
+      line-height: 1.5;
+      margin-bottom: 18px;
+      animation: fadeSlideUp 0.5s ease-out 0.35s both;
+    }
+
+    @keyframes fadeSlideUp {
+      0% { opacity: 0; transform: translateY(10px); }
+      100% { opacity: 1; transform: translateY(0); }
+    }
+
+    .success-notif-actions {
+      display: flex;
+      gap: 10px;
+      justify-content: center;
+      flex-wrap: wrap;
+      animation: fadeSlideUp 0.5s ease-out 0.4s both;
+    }
+
+    .success-notif-btn {
+      padding: 10px 20px;
+      border-radius: 12px;
+      font-family: var(--font-body);
+      font-size: 0.85rem;
+      font-weight: 600;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      transition: all 0.2s;
+      border: none;
+    }
+
+    .success-notif-btn.primary {
+      background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+      color: white;
+      box-shadow: 0 4px 14px rgba(0, 109, 50, 0.25);
+    }
+
+    .success-notif-btn.primary:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 6px 20px rgba(0, 109, 50, 0.3);
+    }
+
+    .success-notif-btn.secondary {
+      background: white;
+      color: var(--text);
+      border: 1.5px solid var(--border);
+    }
+
+    .success-notif-btn.secondary:hover {
+      background: var(--bg);
+    }
+
+    .success-notif-btn svg {
+      width: 15px;
+      height: 15px;
+    }
+
     /* ===== CONTAINER ===== */
     .container {
       max-width: 600px;
@@ -524,128 +694,6 @@
       }
     }
 
-    /* ===== SUCCESS SCREEN ===== */
-    .success-screen {
-      display: none;
-      text-align: center;
-      padding: 16px 0;
-    }
-
-    .success-screen.show {
-      display: block;
-    }
-
-    .success-icon-wrap {
-      width: 130px;
-      height: 130px;
-      background: linear-gradient(135deg, #D1FAE5, #A7F3D0);
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      margin: 0 auto 28px;
-      animation: popIn 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-      box-shadow: 0 0 40px rgba(16, 185, 129, 0.2);
-    }
-
-    @keyframes popIn {
-      0% {
-        transform: scale(0);
-        opacity: 0;
-      }
-
-      100% {
-        transform: scale(1);
-        opacity: 1;
-      }
-    }
-
-    .success-icon-wrap svg {
-      width: 64px;
-      height: 64px;
-      color: var(--success);
-    }
-
-    .success-badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      background: var(--accent-light);
-      color: #92400E;
-      padding: 8px 20px;
-      border-radius: 30px;
-      font-size: 0.85rem;
-      font-weight: 600;
-      margin-bottom: 20px;
-    }
-
-    .success-title {
-      font-family: var(--font-heading);
-      font-size: 2.4rem;
-      font-weight: 700;
-      color: var(--primary);
-      margin-bottom: 10px;
-    }
-
-    .success-name {
-      font-size: 1.3rem;
-      font-weight: 600;
-      color: var(--text);
-      margin-bottom: 20px;
-    }
-
-    .success-message {
-      font-size: 1rem;
-      color: var(--text-secondary);
-      line-height: 1.7;
-      max-width: 420px;
-      margin: 0 auto 32px;
-    }
-
-    .success-actions {
-      display: flex;
-      flex-direction: column;
-      gap: 14px;
-      align-items: center;
-    }
-
-    .success-action-btn {
-      padding: 15px 28px;
-      border-radius: var(--radius-xs);
-      font-family: var(--font-body);
-      font-size: 1rem;
-      font-weight: 600;
-      cursor: pointer;
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
-      transition: all 0.2s;
-      border: none;
-      width: 100%;
-      max-width: 340px;
-      justify-content: center;
-    }
-
-    .success-action-btn.primary {
-      background: var(--primary);
-      color: white;
-      box-shadow: 0 4px 16px rgba(0, 109, 50, 0.25);
-    }
-
-    .success-action-btn.primary:hover {
-      background: var(--primary-dark);
-    }
-
-    .success-action-btn.secondary {
-      background: var(--bg);
-      color: var(--text);
-      border: 1.5px solid var(--border);
-    }
-
-    .success-action-btn.secondary:hover {
-      background: #f0f0f0;
-    }
-
     /* ===== FORM WRAPPER ===== */
     #form-wrapper {
       display: block;
@@ -724,12 +772,13 @@
         font-size: 2.1rem;
       }
 
-      .success-title {
-        font-size: 2.8rem;
+      .success-notif {
+        top: 24px;
+        padding: 28px 32px;
       }
 
-      .success-message {
-        max-width: 480px;
+      .success-notif-title {
+        font-size: 1.9rem;
       }
     }
   </style>
@@ -746,6 +795,48 @@
     <div>
       <div class="mini-title">Simposium Alumni UIN RF</div>
       <div class="mini-subtitle">Formulir Absensi</div>
+    </div>
+  </div>
+
+  <!-- Success Notification (Header Style) -->
+  <div class="success-notif" id="success-notif">
+    <div class="success-notif-glow"></div>
+    <div class="success-notif-icon">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"
+        stroke-linejoin="round">
+        <polyline points="20 6 9 17 4 12" />
+      </svg>
+    </div>
+    <div class="success-notif-badge">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"
+        stroke-linejoin="round">
+        <polyline points="20 6 9 17 4 12" />
+      </svg>
+      Berhasil Absen
+    </div>
+    <div class="success-notif-title">Alhamdulillah!</div>
+    <div class="success-notif-name" id="notif-name"></div>
+    <div class="success-notif-msg">Anda telah berhasil terdaftar. Silakan tunjukkan halaman ini kepada petugas saat registrasi ulang.</div>
+    <div class="success-notif-actions">
+      <button class="success-notif-btn primary" onclick="window.print()">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+          stroke-linejoin="round">
+          <polyline points="6 9 6 2 18 2 18 9" />
+          <path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2" />
+          <rect width="12" height="8" x="6" y="14" />
+        </svg>
+        Cetak Bukti
+      </button>
+      <button class="success-notif-btn secondary" onclick="showFormAgain()">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+          stroke-linejoin="round">
+          <path d="M3 12a9 9 0 0 1 9-9 9.75 9.75 0 0 1 6.74 2.74L21 8" />
+          <path d="M21 3v5h-5" />
+          <path d="M21 12a9 9 0 0 1-9 9 9.75 9.75 0 0 1-6.74-2.74L3 16" />
+          <path d="M8 16H3v5" />
+        </svg>
+        Absen Lagi
+      </button>
     </div>
   </div>
 
@@ -910,51 +1001,6 @@
           </form>
         </div>
       </div>
-
-      <!-- Success Screen -->
-      <div class="success-screen" id="success-screen">
-        <div class="success-icon-wrap">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-            stroke-linejoin="round">
-            <polyline points="20 6 9 17 4 12" />
-          </svg>
-        </div>
-        <div class="success-badge">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
-            stroke-linecap="round" stroke-linejoin="round">
-            <polyline points="20 6 9 17 4 12" />
-          </svg>
-          Berhasil Terkirim
-        </div>
-        <h2 class="success-title">Alhamdulillah!</h2>
-        <p class="success-name" id="success-name"></p>
-        <p class="success-message">
-          Anda telah berhasil terdaftar sebagai peserta Simposium Alumni UIN Raden Fatah Palembang. Silakan tunjukkan
-          halaman ini kepada petugas saat registrasi ulang.
-        </p>
-        <div class="success-actions">
-          <button class="success-action-btn primary" onclick="window.print()">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-              stroke-linecap="round" stroke-linejoin="round">
-              <polyline points="6 9 6 2 18 2 18 9" />
-              <path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2" />
-              <rect width="12" height="8" x="6" y="14" />
-            </svg>
-            Cetak Bukti Absensi
-          </button>
-          <button class="success-action-btn secondary" onclick="showFormAgain()">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-              stroke-linecap="round" stroke-linejoin="round">
-              <path d="M3 12a9 9 0 0 1 9-9 9.75 9.75 0 0 1 6.74 2.74L21 8" />
-              <path d="M21 3v5h-5" />
-              <path d="M21 12a9 9 0 0 1-9 9 9.75 9.75 0 0 1-6.74-2.74L3 16" />
-              <path d="M8 16H3v5" />
-            </svg>
-            Absensi dengan Data Lain
-          </button>
-        </div>
-      </div>
-
     </div>
   </main>
 
@@ -1327,8 +1373,10 @@
 
     function onRegistrationSuccess(nama) {
       document.getElementById('form-wrapper').classList.add('hide');
-      document.getElementById('success-screen').classList.add('show');
-      document.getElementById('success-name').textContent = nama;
+      document.getElementById('notif-name').textContent = nama;
+      document.getElementById('success-notif').classList.add('show');
+      document.getElementById('miniHeader').classList.add('visible');
+      document.getElementById('scrollIndicator').classList.add('hidden');
       const statEl = document.getElementById('stat-registered');
       const current = parseInt(statEl.textContent) || 0;
       statEl.textContent = current + 1;
@@ -1336,9 +1384,11 @@
     }
 
     function showFormAgain() {
-      document.getElementById('success-screen').classList.remove('show');
+      document.getElementById('success-notif').classList.remove('show');
       document.getElementById('form-wrapper').classList.remove('hide');
       document.getElementById('reg-form').reset();
+      document.getElementById('submit-btn').classList.remove('loading');
+      document.getElementById('submit-btn').disabled = false;
       document.getElementById('jurusan').innerHTML = '<option value="">Pilih fakultas terlebih dahulu</option>';
       document.getElementById('jurusan').disabled = true;
       document.getElementById('jurusan-manual-wrap').style.display = 'none';
@@ -1363,13 +1413,22 @@
     let scrolled = false;
 
     function scrollToForm() {
-      document.getElementById('form-wrapper').scrollIntoView({ behavior: 'smooth' });
+      const formWrapper = document.getElementById('form-wrapper');
+      if (!formWrapper.classList.contains('hide')) {
+        formWrapper.scrollIntoView({ behavior: 'smooth' });
+      }
     }
 
     window.addEventListener('scroll', () => {
       const scrollY = window.scrollY || window.pageYOffset;
       const miniHeader = document.getElementById('miniHeader');
       const scrollIndicator = document.getElementById('scrollIndicator');
+      const formHidden = document.getElementById('form-wrapper').classList.contains('hide');
+
+      if (formHidden) {
+        scrollIndicator.classList.add('hidden');
+        return;
+      }
 
       if (scrollY > 100 && !scrolled) {
         scrolled = true;
